@@ -19,4 +19,11 @@ class Admin extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    clients: state.clients
+  }
+}
+
 export default connect(mapStateToProps)(Admin)
