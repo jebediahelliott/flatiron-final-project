@@ -1,15 +1,48 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
+const link = {
+  width: '100px',
+  padding: '12px',
+  margin: '0 6px 6px',
+  background: 'blue',
+  textDecoration: 'none',
+  color: 'white',
+}
+
 const NavBar = () => {
   return (
     <div>
-      <NavLink to='/' exact>Home</NavLink>
-      <NavLink to='/about' exact>About</NavLink>
-      <NavLink to='/training-programs' exact>Training Programs</NavLink>
-      <NavLink to='/faq' exact>FAQ</NavLink>
-      <NavLink to='/contact' exact>Contact Us</NavLink>
-      <NavLink to='/login' exact>Log In</NavLink>
+      <NavLink to='/'
+      exact 
+      style={link}
+      activeStyle={{background: 'darkblue'}}
+      >Home</NavLink>
+      <NavLink to='/ab
+      out' e
+      xact style={link}
+      activeStyle={{background: 'darkblue'}}
+      >About</NavLink>
+      <NavLink to='/tr
+      aining
+      -programs' exact style={link}
+      activeStyle={{background: 'darkblue'}}
+      >Training Programs</NavLink>
+      <NavLink to='/fa
+      q' exa
+      ct style={link}
+      activeStyle={{background: 'darkblue'}}
+      >FAQ</NavLink>
+      <NavLink to='/co
+      ntact'
+       exact style={link}
+      activeStyle={{background: 'darkblue'}}
+      >Contact Us</NavLink>
+      <NavLink to='/lo
+      gin' e
+      xact style={link}
+      activeStyle={{background: 'darkblue'}}
+      >Log In</NavLink>
     </div>
   )
 }
