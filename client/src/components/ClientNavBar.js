@@ -10,7 +10,7 @@ const link = {
   color: 'white',
 }
 
-const NavBar = () => {
+const ClientNavBar = () => {
   return (
     <div>
       <NavLink to='/'
@@ -34,11 +34,11 @@ const NavBar = () => {
       exact style={link}
       activeStyle={{background: 'darkblue'}}
       >Contact Us</NavLink>
-      <NavLink to='/login'
+      <NavLink to='/'
       exact style={link}
       activeStyle={{background: 'darkblue'}}
-      >Log In</NavLink>
+      >Log Out</NavLink>
     </div>
   )
 }
-export default NavBar
+export default ClientNavBar
