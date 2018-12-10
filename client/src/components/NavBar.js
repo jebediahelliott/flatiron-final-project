@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import {Navbar, Nav, NavItem } from 'react-bootstrap';
 
 const link = {
   width: '100px',
@@ -8,36 +9,54 @@ const link = {
   background: 'blue',
   textDecoration: 'none',
   color: 'white',
+  alignSelf: 'flex-end'
 }
 
 const NavBar = () => {
   return (
     <div>
-      <NavLink to='/'
-      exact
-      style={link}
-      activeStyle={{background: 'darkblue'}}
-      >Home</NavLink>
-      <NavLink to='/about'
-      xact style={link}
-      activeStyle={{background: 'darkblue'}}
-      >About</NavLink>
-      <NavLink to='/training-programs'
-      exact style={link}
-      activeStyle={{background: 'darkblue'}}
-      >Training Programs</NavLink>
-      <NavLink to='/faq'
-      exact style={link}
-      activeStyle={{background: 'darkblue'}}
-      >FAQ</NavLink>
-      <NavLink to='/contact'
-      exact style={link}
-      activeStyle={{background: 'darkblue'}}
-      >Contact Us</NavLink>
-      <NavLink to='/login'
-      exact style={link}
-      activeStyle={{background: 'darkblue'}}
-      >Log In</NavLink>
+      <Navbar>
+        <Nav>
+          <NavItem eventKey={1}>
+            <NavLink to='/'
+            exact
+            // activeStyle={{background: 'lightgreen'}}
+            >Home</NavLink>
+          </NavItem>
+          <NavItem eventKey={2}>
+            <NavLink to='/about'
+            exact
+            // activeStyle={{background: 'lightgreen'}}
+            >About</NavLink>
+          </NavItem>
+          <NavItem eventKey={3}>
+            <NavLink to='/training-programs'
+            exact
+            // activeStyle={{background: 'lightgreen'}}
+            >Training Programs</NavLink>
+          </NavItem>
+          <NavItem eventKey={4}>
+            <NavLink to='/faq'
+            exact
+            // activeStyle={{background: 'lightgreen'}}
+            >FAQ</NavLink>
+          </NavItem>
+          <NavItem eventKey={5}>
+            <NavLink to='/contact'
+            exact
+            // activeStyle={{background: 'lightgreen'}}
+            >Contact Us</NavLink>
+          </NavItem>
+        </Nav>
+        <Nav pullRight>
+          <NavItem>
+            <NavLink to='/login'
+            exact
+            // activeStyle={{background: 'lightgreen'}}
+            >Log In</NavLink>
+          </NavItem>
+        </Nav>
+      </Navbar>
     </div>
   )
 }
