@@ -9,8 +9,15 @@ import TrainingPrograms from '../components/TrainingPrograms'
 import FAQ from '../components/FAQ'
 import Contact from '../components/Contact'
 import Login from '../components/Login'
+import authLogin from '../actions/authLogin'
 
 class App extends Component {
+
+  handleLogin = () => {
+    const login = authLogin();
+    login(this.props.dispatch)
+  }
+
   render() {
     console.log(this.props.clients);
     return (
@@ -22,7 +29,7 @@ class App extends Component {
           <Route exact path='/training-programs' component={TrainingPrograms} />
           <Route exact path='/faq' component={FAQ} />
           <Route exact path='/contact' component={Contact} />
-          <Route exact path='/login' component={Login} />
+          <Route exact path='/login' render={routerProps => <Login {...routerProps} handleLogin={this.handleLogin} /> } />
         </div>
       </Router>
     );
