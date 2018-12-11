@@ -1,14 +1,17 @@
 function authLogin() {
   return (dispatch, login) => {
     dispatch({type: 'AUTHENTICATING'})
-    fetch('api/login',{
+    fetch('/authenticate',{
       headers: {
         "Content-Type": "application/json"
       },
+      method: 'post',
       body: JSON.stringify(login)
     })
     .then(res => res.json())
-    .then(dispatch({type: 'USER_AUTHORIZED'}))
+    .then(user => {
+      debugger
+    })
   }
 
 }

@@ -16,11 +16,21 @@ class Login extends Component {
     })
   }
 
+  handleSubmit = event => {
+    event.preventDefault();
+    const login = {email: this.state.email, password: this.state.password}
+    this.props.handleLogin(login)
+    this.setState({
+      email: '',
+      password: ''
+    })
+  }
+
 
   render() {
     return (
       <div style={{margin: '10%'}}>
-        <form style={{maxWidth: '300px'}}>
+        <form style={{maxWidth: '300px'}} onSubmit={this.handleSubmit}>
           <FormGroup
            controlId="loginForm"
 

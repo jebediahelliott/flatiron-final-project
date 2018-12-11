@@ -13,9 +13,9 @@ import authLogin from '../actions/authLogin'
 
 class App extends Component {
 
-  handleLogin = () => {
+  handleLogin = (loginInfo) => {
     const login = authLogin();
-    login(this.props.dispatch)
+    login(this.props.dispatch, loginInfo)
   }
 
   render() {
