@@ -9,8 +9,17 @@ function authLogin() {
       body: JSON.stringify(login)
     })
     .then(res => res.json())
-    .then(user => {
-      debugger
+    .then(res => {
+      fetch(`/users/${res.user.id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `${res.auth_token}`
+        }
+      })
+      .then(res => res.json())
+      .then(res => {
+        debugger
+      })
     })
   }
 
