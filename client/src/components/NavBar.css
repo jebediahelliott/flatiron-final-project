@@ -1,0 +1,21 @@
+#navBar {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.navLink {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  float: left;
+  border-right: 2px solid #33691e;
+}
+
+.navLink:last-child {
+  float: right;
+  border-right: none;
+}
