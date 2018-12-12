@@ -10,6 +10,8 @@ import FAQ from '../components/FAQ'
 import Contact from '../components/Contact'
 import Login from '../components/Login'
 import authLogin from '../actions/authLogin'
+import '../components/staticPages.css'
+
 
 class App extends Component {
 
@@ -18,26 +20,16 @@ class App extends Component {
     login(this.props.dispatch, loginInfo)
   }
 
-  componentDidMount() {
-    fetch('/static_pages')
-    .then(res => res.json())
-    .then(res => {
-      debugger
-      this.props.dispatch({type: 'LOAD_PAGES', })
-    })
-  }
-
   render() {
-    console.log(this.props.clients);
     return (
       <Router>
         <div>
           <NavBar />
-          <Route exact path='/' component={Home} />
-          <Route exact path='/about' component={About} />
-          <Route exact path='/training-programs' component={TrainingPrograms} />
-          <Route exact path='/faq' component={FAQ} />
-          <Route exact path='/contact' component={Contact} />
+          <Route exact path='/' render={routerProps => <Home {...routerProps} content={this.props.static} /> } />
+          <Route exact path='/about' render={routerProps => <About {...routerProps} content={this.props.static} /> } />
+          <Route exact path='/training-programs' render={routerProps => <TrainingPrograms {...routerProps} content={this.props.static} /> } />
+          <Route exact path='/faq' render={routerProps => <FAQ {...routerProps} content={this.props.static} /> } />
+          <Route exact path='/contact' render={routerProps => <Contact {...routerProps} content={this.props.static} /> } />
           <Route exact path='/login' render={routerProps => <Login {...routerProps} handleLogin={this.handleLogin} /> } />
         </div>
       </Router>
@@ -46,7 +38,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return {clients: state.clients}
+  return {static: state.static}
 }
+
 
 export default connect(mapStateToProps)(App);

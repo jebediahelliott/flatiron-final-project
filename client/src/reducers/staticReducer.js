@@ -1,7 +1,7 @@
-export default function clientsReducer(state = {pages: []}, action) {
+export default function staticReducer(state = [], action) {
   switch (action.type) {
     case 'LOAD_PAGES':
-        return {pages: action.pages}
+        return action.pages
     default:
       return state
   }

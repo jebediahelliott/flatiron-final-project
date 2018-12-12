@@ -5,15 +5,24 @@ import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import clientsReducer from './reducers/clientsReducer';
+import rootReducer from './reducers/rootReducer';
 
-const store = createStore(clientsReducer)
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root'));
+
+fetch('/static_pages')
+.then(res => res.json())
+.then(initialState => {
+  const store = createStore(rootReducer, {static: initialState, clients: {loading: false, clients: [], user: {}}})
+
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root'));
+})
+
+
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
