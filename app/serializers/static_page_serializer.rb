@@ -1,3 +1,4 @@
 class StaticPageSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :title
+  has_many :paragraphs
 end

@@ -10,6 +10,7 @@ function authLogin() {
     })
     .then(res => res.json())
     .then(res => {
+      localStorage.setItem("auth_token",`${res.auth_token}`)
       fetch(`/users/${res.user.id}`, {
         headers: {
           "Content-Type": "application/json",
@@ -19,6 +20,7 @@ function authLogin() {
       .then(res => res.json())
       .then(res => {
         // TODO: create if admin condition
+
         dispatch({type: 'USER_LOGIN', user: res})
       })
     })

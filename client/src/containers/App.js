@@ -18,6 +18,15 @@ class App extends Component {
     login(this.props.dispatch, loginInfo)
   }
 
+  componentDidMount() {
+    fetch('/static_pages')
+    .then(res => res.json())
+    .then(res => {
+      debugger
+      this.props.dispatch({type: 'LOAD_PAGES', })
+    })
+  }
+
   render() {
     console.log(this.props.clients);
     return (

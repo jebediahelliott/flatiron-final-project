@@ -1,3 +1,8 @@
-export default function clientsReducer(state = {clients: []}, action) {
-  return state
+export default function clientsReducer(state = {pages: []}, action) {
+  switch (action.type) {
+    case 'LOAD_PAGES':
+        return {pages: action.pages}
+    default:
+      return state
+  }
 }

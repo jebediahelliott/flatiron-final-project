@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
   before_action :set_static_page, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_request, only: [:index]
+
 
   # GET /static_pages
   def index
