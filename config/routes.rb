@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :static_pages
   post 'authenticate', to: 'authentication#authenticate'
   resources :dogs
   resources :users

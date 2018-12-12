@@ -11,3 +11,15 @@ jeb.dogs.build(name: 'Arya', breed: 'Boxer/Beagle', training_notes: 'notes')
 jeb.dogs.build(name: 'Hodor', breed: 'Pitbull', training_notes: 'notes')
 
 jeb.save
+
+StaticPage.create(title: 'About')
+StaticPage.create(title: 'FAQ')
+StaticPage.create(title: 'Contact Us')
+StaticPage.create(title: 'Training Programs')
+
+StaticPage.all.each do |page|
+  3.times do
+    page.paragraphs.build(content: Faker::Lorem.paragraphs)
+  end
+  page.save
+end
