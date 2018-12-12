@@ -18,7 +18,8 @@ function authLogin() {
       })
       .then(res => res.json())
       .then(res => {
-        debugger
+        // TODO: create if admin condition
+        dispatch({type: 'USER_LOGIN', user: res})
       })
     })
   }
