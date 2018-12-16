@@ -1,6 +1,5 @@
 function sendInquiry() {
   return (inquiry) => {
-    debugger
     fetch('/inquiry', {
       headers: {
         "Content-Type": "application/json"

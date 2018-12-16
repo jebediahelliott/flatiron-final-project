@@ -5,6 +5,7 @@ class Contact extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      name: '',
       email: '',
       phone: '',
       message: ''
@@ -16,6 +17,7 @@ class Contact extends Component {
     const inquiryInfo = {email: this.state.email, message: this.state.message, phone: this.state.phone}
     this.props.handleInquiry(inquiryInfo)
     this.setState({
+      name: '',
       email: '',
       phone: '',
       message: ''
@@ -35,6 +37,13 @@ class Contact extends Component {
       <div className="staticLayout">
         <form onSubmit={this.handleSubmit}>
           <FormGroup>
+            <ControlLabel>Name</ControlLabel>
+            <FormControl
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
             <ControlLabel>Email</ControlLabel>
             <FormControl
               type="text"
