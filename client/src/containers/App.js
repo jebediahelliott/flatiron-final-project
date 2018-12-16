@@ -11,6 +11,7 @@ import Contact from '../components/Contact'
 import Login from '../components/Login'
 import authLogin from '../actions/authLogin'
 import '../components/staticPages.css'
+import sendInquiry from '../actions/sendInquiry'
 
 
 class App extends Component {
@@ -20,17 +21,46 @@ class App extends Component {
     login(this.props.dispatch, loginInfo)
   }
 
+  handleInquiry = (inquiryInfo) => {
+    const inquiry = sendInquiry();
+    inquiry(inquiryInfo)
+  }
+
+
   render() {
     return (
       <Router>
         <div>
           <NavBar />
-          <Route exact path='/' render={routerProps => <Home {...routerProps} content={this.props.static} /> } />
-          <Route exact path='/about' render={routerProps => <About {...routerProps} content={this.props.static} /> } />
-          <Route exact path='/training-programs' render={routerProps => <TrainingPrograms {...routerProps} content={this.props.static} /> } />
-          <Route exact path='/faq' render={routerProps => <FAQ {...routerProps} content={this.props.static} /> } />
-          <Route exact path='/contact' render={routerProps => <Contact {...routerProps} content={this.props.static} /> } />
-          <Route exact path='/login' render={routerProps => <Login {...routerProps} handleLogin={this.handleLogin} /> } />
+          <Route
+            exact
+            path='/'
+            render={routerProps => <Home {...routerProps} content={this.props.static} /> }
+          />
+          <Route
+            exact
+            path='/about'
+            render={routerProps => <About {...routerProps} content={this.props.static} /> } />
+          <Route
+            exact
+            path='/training-programs'
+            render={routerProps => <TrainingPrograms {...routerProps} content={this.props.static} /> }
+          />
+          <Route
+            exact
+            path='/faq'
+            render={routerProps => <FAQ {...routerProps} content={this.props.static} /> }
+          />
+          <Route
+            exact
+            path='/contact'
+            render={routerProps => <Contact {...routerProps} content={this.props.static} handleInquiry={this.handleInquiry} /> }
+          />
+          <Route
+            exact
+            path='/login'
+            render={routerProps => <Login {...routerProps} handleLogin={this.handleLogin} /> }
+          />
         </div>
       </Router>
     );
