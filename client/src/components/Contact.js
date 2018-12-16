@@ -14,7 +14,7 @@ class Contact extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const inquiryInfo = {email: this.state.email, message: this.state.message, phone: this.state.phone}
+    const inquiryInfo = {name: this.state.name, email: this.state.email, message: this.state.message, phone_number: this.state.phone}
     this.props.handleInquiry(inquiryInfo)
     this.setState({
       name: '',

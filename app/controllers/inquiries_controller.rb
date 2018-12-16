@@ -1,5 +1,7 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_request
+
 
   # GET /inquiries
   def index
@@ -46,6 +48,6 @@ class InquiriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def inquiry_params
-      params.fetch(:inquiry, {})
+      params.fetch(:inquiry, {}).permit(:name, :email, :phone_number, :message)
     end
 end

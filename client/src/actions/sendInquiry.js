@@ -1,6 +1,6 @@
 function sendInquiry() {
   return (inquiry) => {
-    fetch('/inquiry', {
+    fetch('/inquiries', {
       headers: {
         "Content-Type": "application/json"
       },
