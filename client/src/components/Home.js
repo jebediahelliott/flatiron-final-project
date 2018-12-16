@@ -1,11 +1,11 @@
 import React from 'react'
-import './staticPages.css'
 
 const Home = props => {
+  const pcontent = props.content[0].paragraphs.map(p => <p key={p.id}>{p.content}</p>)
   return (
-    <div>
+    <div className='staticLayout'>
       <h1>{props.content[0].title}</h1>
-      <p>{props.content[0].paragraphs[0].content}</p>
+      {pcontent}
     </div>
   )
 }

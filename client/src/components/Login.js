@@ -29,8 +29,8 @@ class Login extends Component {
 
   render() {
     return (
-      <div style={{margin: '10%'}}>
-        <form style={{maxWidth: '300px'}} onSubmit={this.handleSubmit}>
+      <div className="staticLayout">
+        <form onSubmit={this.handleSubmit}>
           <FormGroup
            controlId="loginForm"
 

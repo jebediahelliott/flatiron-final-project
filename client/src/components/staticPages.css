@@ -1,3 +1,14 @@
-.static-layout {
-  outline-style: 'solid';
+.staticLayout {
+  border: solid 2px;
+  border-color: #33691e;
+  margin: auto;
+  margin-top: 15px;
+  width: 80%;
+  box-shadow: 0 10px 10px 5px grey;
+  padding: 10px;
+  height: 100%;
+}
+
+h1 {
+  text-align: center;
 }
