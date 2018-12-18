@@ -9,7 +9,7 @@ function sendInquiry() {
     })
     .then(res => res.json())
     .then(res => {
-      //display confirmation
+      alert("Message Recieved")
     })
   }
 }

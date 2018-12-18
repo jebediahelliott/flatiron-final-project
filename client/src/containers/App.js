@@ -40,7 +40,8 @@ class App extends Component {
           <Route
             exact
             path='/about'
-            render={routerProps => <About {...routerProps} content={this.props.static} /> } />
+            render={routerProps => <About {...routerProps} content={this.props.static} /> }
+          />
           <Route
             exact
             path='/training-programs'
