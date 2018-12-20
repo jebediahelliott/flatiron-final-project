@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './NavBar.css'
 
 
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <div id='navBar'>
       <NavLink to='/'
@@ -32,11 +32,18 @@ const NavBar = () => {
       className='navLink'
       activeStyle={{background: '#33691e', color: 'white'}}
       >Contact Us</NavLink>
-      <NavLink to='/login'
-      exact
-      className='navLink'
-      activeStyle={{background: '#33691e', color: 'white'}}
-      >Log In</NavLink>
+      { props.user ? (
+        <Link to='/'
+        className='navLink'
+        onClick={props.handleLogout}
+        >Log Out</Link>
+      ) : (
+        <NavLink to='/login'
+        exact
+        className='navLink'
+        activeStyle={{background: '#33691e', color: 'white'}}
+        >Log In</NavLink>
+      )}
     </div>
   )
 }

@@ -12,6 +12,7 @@ import Login from '../components/Login'
 import authLogin from '../actions/authLogin'
 import '../components/staticPages.css'
 import sendInquiry from '../actions/sendInquiry'
+import logout from '../actions/logout'
 
 
 class App extends Component {
@@ -26,12 +27,17 @@ class App extends Component {
     inquiry(inquiryInfo)
   }
 
+  handleLogout = () => {
+    const processLogout = logout()
+    processLogout(this.props.dispatch)
+  }
+
 
   render() {
     return (
       <Router>
         <div>
-          <NavBar />
+          <NavBar user={this.props.user} handleLogout={this.handleLogout} />
           <Route
             exact
             path='/'
@@ -69,7 +75,10 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return {static: state.static}
+  return ({
+    static: state.static,
+    user: state.users.user
+  })
 }
 
 

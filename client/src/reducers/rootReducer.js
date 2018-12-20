@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import clientsReducer from './clientsReducer'
+import userReducer from './userReducer'
 import staticReducer from './staticReducer'
 
 const rootReducer = combineReducers({
   static: staticReducer,
-  clients: clientsReducer
+  users: userReducer
 });
 
 export default rootReducer;
