@@ -13,6 +13,7 @@ import authLogin from '../actions/authLogin'
 import '../components/staticPages.css'
 import sendInquiry from '../actions/sendInquiry'
 import logout from '../actions/logout'
+import Profile from '../components/Profile'
 
 
 class App extends Component {
@@ -67,6 +68,11 @@ class App extends Component {
             exact
             path='/login'
             render={routerProps => <Login {...routerProps} handleLogin={this.handleLogin} /> }
+          />
+          <Route
+            exact
+            path='/profile'
+            render={routerProps => <Profile {...routerProps} user={this.props.user} /> }
           />
         </div>
       </Router>

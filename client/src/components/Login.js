@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap'
+import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
   constructor() {
@@ -16,10 +17,11 @@ class Login extends Component {
     })
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
     const login = {email: this.state.email, password: this.state.password}
-    this.props.handleLogin(login)
+    await this.props.handleLogin(login)
+    this.props.history.push('/profile')
     this.setState({
       email: '',
       password: ''
