@@ -1,43 +1,54 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+import './NavBar.css'
 
-const link = {
-  width: '100px',
-  padding: '12px',
-  margin: '0 6px 6px',
-  background: 'blue',
-  textDecoration: 'none',
-  color: 'white',
-}
 
-const AdminNavBar = () => {
+
+const AdminNavBar = (props) => {
   return (
-    <div>
+    <div id='navBar'>
       <NavLink to='/'
       exact
-      style={link}
-      activeStyle={{background: 'darkblue'}}
+      className='navLink'
+      activeStyle={{background: '#33691e', color: 'white'}}
       >Home</NavLink>
       <NavLink to='/about'
-      xact style={link}
-      activeStyle={{background: 'darkblue'}}
+      exact
+      className='navLink'
+      activeStyle={{background: '#33691e', color: 'white'}}
       >About</NavLink>
       <NavLink to='/training-programs'
-      exact style={link}
-      activeStyle={{background: 'darkblue'}}
+      exact
+      className='navLink'
+      activeStyle={{background: '#33691e', color: 'white'}}
       >Training Programs</NavLink>
       <NavLink to='/faq'
-      exact style={link}
-      activeStyle={{background: 'darkblue'}}
+      exact
+      className='navLink'
+      activeStyle={{background: '#33691e', color: 'white'}}
       >FAQ</NavLink>
       <NavLink to='/contact'
-      exact style={link}
-      activeStyle={{background: 'darkblue'}}
+      exact
+      className='navLink'
+      activeStyle={{background: '#33691e', color: 'white'}}
       >Contact Us</NavLink>
-      <NavLink to='/'
-      exact style={link}
-      activeStyle={{background: 'darkblue'}}
-      >Log Out</NavLink>
+      <NavLink to='/clients'
+      exact
+      className='navLink'
+      activeStyle={{background: '#33691e', color: 'white'}}
+      >Clients</NavLink>
+      { props.user ? (
+        <Link to='/'
+        className='navLink'
+        onClick={props.handleLogout}
+        >Log Out</Link>
+      ) : (
+        <NavLink to='/login'
+        exact
+        className='navLink'
+        activeStyle={{background: '#33691e', color: 'white'}}
+        >Log In</NavLink>
+      )}
     </div>
   )
 }

@@ -11,17 +11,29 @@ function authLogin() {
     .then(res => res.json())
     .then(res => {
       localStorage.setItem("auth_token",`${res.auth_token}`)
-      fetch(`/users/${res.user.id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `${res.auth_token}`
-        }
-      })
-      .then(res => res.json())
-      .then(res => {
-        // TODO: create if admin condition
-        dispatch({type: 'USER_LOGIN', user: res})
-      })
+      if (res.user.isAdmin) {
+        fetch('/users', {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `${res.auth_token}`
+          }
+        })
+        .then(res => res.json())
+        .then(res => {
+          dispatch({type: 'ADMIN_LOGIN', clients: res})
+        })
+      }else {
+        fetch(`/users/${res.user.id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `${res.auth_token}`
+          }
+        })
+        .then(res => res.json())
+        .then(res => {
+          dispatch({type: 'USER_LOGIN', user: res})
+        })
+      }
     })
   }
 
