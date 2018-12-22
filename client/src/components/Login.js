@@ -17,11 +17,10 @@ class Login extends Component {
     })
   }
 
-  handleSubmit = async event => {
+  handleSubmit = event => {
     event.preventDefault();
     const login = {email: this.state.email, password: this.state.password}
-    await this.props.handleLogin(login)
-    this.props.history.push('/profile')
+    this.props.handleLogin(login)
     this.setState({
       email: '',
       password: ''
@@ -60,6 +59,5 @@ class Login extends Component {
   }
 }
 
-// validationState={this.getValidationState()}
 
 export default Login;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import Home from '../components/Home'
 import NavBar from '../components/NavBar'
@@ -67,7 +67,12 @@ class App extends Component {
           <Route
             exact
             path='/login'
-            render={routerProps => <Login {...routerProps} handleLogin={this.handleLogin} /> }
+            render={routerProps => (
+              this.props.user ? (
+                <Redirect to='/profile' />
+              ) : (
+                <Login {...routerProps} handleLogin={this.handleLogin} />)
+            )}
           />
           <Route
             exact
