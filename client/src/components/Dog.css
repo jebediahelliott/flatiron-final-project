@@ -1,0 +1,11 @@
+.dogCard {
+  display: inline-block;
+  border: solid 1px;
+  border-color: #33691e;
+  margin: auto;
+  margin-top: 15px;
+  margin-left: 2%;
+  width: 30%;
+  box-shadow: 10px 10px 5px grey;
+  padding: 10px;
+}

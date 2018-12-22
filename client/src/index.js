@@ -12,7 +12,7 @@ import rootReducer from './reducers/rootReducer';
 fetch('/static_pages')
 .then(res => res.json())
 .then(initialState => {
-  const store = createStore(rootReducer, {static: initialState, loading: false})
+  const store = createStore(rootReducer, {static: initialState})
 
   ReactDOM.render(
     <Provider store={store}>
