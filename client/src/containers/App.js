@@ -1,30 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
-import Home from '../components/Home'
-import NavBar from '../components/NavBar'
-import About from '../components/About'
-import TrainingPrograms from '../components/TrainingPrograms'
-import FAQ from '../components/FAQ'
-import Contact from '../components/Contact'
-import Login from '../components/Login'
-import authLogin from '../actions/authLogin'
-import '../components/staticPages.css'
-import sendInquiry from '../actions/sendInquiry'
-import logout from '../actions/logout'
-import Profile from '../components/Profile'
 import Admin from './Admin'
+import Client from './Client'
+import Static from './Static'
 
 
 class App extends Component {
 
   render() {
     let container
-    if (props.user.isAdmin) {
+    if (this.props.user && this.props.user.isAdmin) {
       container = <Admin />
-    }else if (props.user) {
-      container = <User />
+    }else if (this.props.user) {
+      container = <Client />
     }else {
       container = <Static />
     }

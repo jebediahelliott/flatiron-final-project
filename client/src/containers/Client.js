@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Home from '../components/Home'
 import ClientNavBar from '../components/NavBar'
 import About from '../components/About'
@@ -9,6 +9,9 @@ import FAQ from '../components/FAQ'
 import Contact from '../components/Contact'
 import sendInquiry from '../actions/sendInquiry'
 import logout from '../actions/logout'
+import NavBar from '../components/NavBar'
+import Profile from '../components/Profile'
+import Login from '../components/Login'
 
 class Client extends Component {
 

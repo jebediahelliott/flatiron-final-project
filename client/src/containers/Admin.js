@@ -7,6 +7,15 @@ import AdminAbout from '../components/About'
 import AdminTrainingPrograms from '../components/TrainingPrograms'
 import AdminFAQ from '../components/FAQ'
 import AdminContact from '../components/Contact'
+import Home from '../components/Home'
+import NavBar from '../components/NavBar'
+import About from '../components/About'
+import TrainingPrograms from '../components/TrainingPrograms'
+import FAQ from '../components/FAQ'
+import Contact from '../components/Contact'
+import authLogin from '../actions/authLogin'
+import logout from '../actions/logout'
+import Clients from '../components/Clients'
 
 
 class Admin extends Component {

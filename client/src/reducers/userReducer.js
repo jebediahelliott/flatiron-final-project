@@ -1,4 +1,4 @@
-export default function clientsReducer(state = {}, action) {
+export default function userReducer(state = {}, action) {
   switch (action.type) {
     case 'AUTHENTICATING':
       return {...state, loading: true}
