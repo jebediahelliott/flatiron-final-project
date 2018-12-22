@@ -33,6 +33,13 @@ const NavBar = (props) => {
       activeStyle={{background: '#33691e', color: 'white'}}
       >Contact Us</NavLink>
       { props.user ? (
+        <NavLink to='/profile'
+        exact
+        className='navLink'
+        activeStyle={{background: '#33691e', color: 'white'}}
+        >Profile</NavLink>
+      ) : ( null )}
+      { props.user ? (
         <Link to='/'
         className='navLink'
         onClick={props.handleLogout}
