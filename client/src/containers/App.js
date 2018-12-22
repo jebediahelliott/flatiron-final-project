@@ -14,80 +14,31 @@ import '../components/staticPages.css'
 import sendInquiry from '../actions/sendInquiry'
 import logout from '../actions/logout'
 import Profile from '../components/Profile'
+import Admin from './Admin'
 
 
 class App extends Component {
 
-  handleLogin = (loginInfo) => {
-    const login = authLogin();
-    login(this.props.dispatch, loginInfo)
-  }
-
-  handleInquiry = (inquiryInfo) => {
-    const inquiry = sendInquiry();
-    inquiry(inquiryInfo)
-  }
-
-  handleLogout = () => {
-    const processLogout = logout()
-    processLogout(this.props.dispatch)
-  }
-
-
   render() {
+    let container
+    if (props.user.isAdmin) {
+      container = <Admin />
+    }else if (props.user) {
+      container = <User />
+    }else {
+      container = <Static />
+    }
+
     return (
-      <Router>
-        <div>
-          <NavBar user={this.props.user} handleLogout={this.handleLogout} />
-          <Route
-            exact
-            path='/'
-            render={routerProps => <Home {...routerProps} content={this.props.static} /> }
-          />
-          <Route
-            exact
-            path='/about'
-            render={routerProps => <About {...routerProps} content={this.props.static} /> }
-          />
-          <Route
-            exact
-            path='/training-programs'
-            render={routerProps => <TrainingPrograms {...routerProps} content={this.props.static} /> }
-          />
-          <Route
-            exact
-            path='/faq'
-            render={routerProps => <FAQ {...routerProps} content={this.props.static} /> }
-          />
-          <Route
-            exact
-            path='/contact'
-            render={routerProps => <Contact {...routerProps} content={this.props.static} handleInquiry={this.handleInquiry} /> }
-          />
-          <Route
-            exact
-            path='/login'
-            render={routerProps => (
-              this.props.user ? (
-                <Redirect to='/profile' />
-              ) : (
-                <Login {...routerProps} handleLogin={this.handleLogin} />)
-            )}
-          />
-          <Route
-            exact
-            path='/profile'
-            render={routerProps => <Profile {...routerProps} user={this.props.user} /> }
-          />
-        </div>
-      </Router>
+      <div>
+        {container}
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => {
   return ({
-    static: state.static,
     user: state.users.user
   })
 }

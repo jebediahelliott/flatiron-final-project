@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import './App.css';
+import {BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 import Home from '../components/Home'
-import ClientNavBar from '../components/NavBar'
+import NavBar from '../components/NavBar'
 import About from '../components/About'
 import TrainingPrograms from '../components/TrainingPrograms'
 import FAQ from '../components/FAQ'
 import Contact from '../components/Contact'
+import Login from '../components/Login'
+import authLogin from '../actions/authLogin'
+import '../components/staticPages.css'
 import sendInquiry from '../actions/sendInquiry'
-import logout from '../actions/logout'
 
-class Client extends Component {
+
+class Static extends Component {
+
+  handleLogin = (loginInfo) => {
+    const login = authLogin();
+    login(this.props.dispatch, loginInfo)
+  }
 
   handleInquiry = (inquiryInfo) => {
     const inquiry = sendInquiry();
     inquiry(inquiryInfo)
   }
 
-  handleLogout = () => {
-    const processLogout = logout()
-    processLogout(this.props.dispatch)
-  }
 
-  render () {
+  render() {
     return (
       <Router>
         <div>
@@ -55,28 +60,19 @@ class Client extends Component {
           <Route
             exact
             path='/login'
-            render={routerProps => (
-              this.props.user ? (
-                <Redirect to='/profile' />
-              ) : (
-                <Login {...routerProps} handleLogin={this.handleLogin} />)
-            )}
-          />
-          <Route
-            exact
-            path='/profile'
-            render={routerProps => <Profile {...routerProps} user={this.props.user} /> }
+            render={routerProps => <Login {...routerProps} handleLogin={this.handleLogin} /> }
           />
         </div>
       </Router>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
-  return {
-    clients: state.clients
-  }
+  return ({
+    static: state.static,
+  })
 }
 
-export default connect(mapStateToProps)(Client)
+
+export default connect(mapStateToProps)(Static);
