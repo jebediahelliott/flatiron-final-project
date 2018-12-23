@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
 import { Provider } from 'react-redux';
 import rootReducer from './reducers/rootReducer';
 
@@ -12,7 +13,7 @@ import rootReducer from './reducers/rootReducer';
 fetch('/static_pages')
 .then(res => res.json())
 .then(initialState => {
-  const store = createStore(rootReducer, {static: initialState})
+  const store = createStore(rootReducer, {static: initialState}, applyMiddleware(thunk))
 
   ReactDOM.render(
     <Provider store={store}>

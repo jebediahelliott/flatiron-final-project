@@ -5,7 +5,7 @@ export default function userReducer(state = {}, action) {
     case 'USER_LOGIN':
       return {...state, loading: false, user: {name: action.user.name, email: action.user.email, dogs: action.user.dogs}}
     case 'ADMIN_LOGIN':
-      return {...state, loading: false, user: action.user}
+      return {...state, loading: false, user: {name: action.user.name, email: action.user.email, isAdmin: action.user.is_admin}}
     case 'LOAD_CLIENTS':
       return {...state, loading: false, clients: action.clients}
     case 'LOGOUT':

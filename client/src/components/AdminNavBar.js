@@ -12,27 +12,27 @@ const AdminNavBar = (props) => {
       className='navLink'
       activeStyle={{background: '#33691e', color: 'white'}}
       >Home</NavLink>
-      <NavLink to='/about'
+      <NavLink to='/admin/about'
       exact
       className='navLink'
       activeStyle={{background: '#33691e', color: 'white'}}
       >About</NavLink>
-      <NavLink to='/training-programs'
+      <NavLink to='/admin/training-programs'
       exact
       className='navLink'
       activeStyle={{background: '#33691e', color: 'white'}}
       >Training Programs</NavLink>
-      <NavLink to='/faq'
+      <NavLink to='/admin/faq'
       exact
       className='navLink'
       activeStyle={{background: '#33691e', color: 'white'}}
       >FAQ</NavLink>
-      <NavLink to='/contact'
+      <NavLink to='/admin/contact'
       exact
       className='navLink'
       activeStyle={{background: '#33691e', color: 'white'}}
       >Contact Us</NavLink>
-      <NavLink to='/clients'
+      <NavLink to='/admin/clients'
       exact
       className='navLink'
       activeStyle={{background: '#33691e', color: 'white'}}

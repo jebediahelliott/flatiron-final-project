@@ -78,7 +78,8 @@ class Client extends Component {
 
 const mapStateToProps = state => {
   return {
-    clients: state.clients
+    static: state.static,
+    user: state.users.user
   }
 }
 

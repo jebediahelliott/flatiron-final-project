@@ -31,34 +31,35 @@ class Admin extends Component {
   }
 
   render () {
+    debugger
     return (
       <Router>
         <div>
-          <NavBar user={this.props.user} handleLogout={this.handleLogout} />
+          <AdminNavBar user={this.props.user} handleLogout={this.handleLogout} />
           <Route
             exact
             path='/'
-            render={routerProps => <Home {...routerProps} content={this.props.static} /> }
+            render={routerProps => <AdminHome {...routerProps} content={this.props.static} /> }
           />
           <Route
             exact
             path='/admin/about'
-            render={routerProps => <About {...routerProps} content={this.props.static} /> }
+            render={routerProps => <AdminAbout {...routerProps} content={this.props.static} /> }
           />
           <Route
             exact
             path='/admin/training-programs'
-            render={routerProps => <TrainingPrograms {...routerProps} content={this.props.static} /> }
+            render={routerProps => <AdminTrainingPrograms {...routerProps} content={this.props.static} /> }
           />
           <Route
             exact
             path='/admin/faq'
-            render={routerProps => <FAQ {...routerProps} content={this.props.static} /> }
+            render={routerProps => <AdminFAQ {...routerProps} content={this.props.static} /> }
           />
           <Route
             exact
             path='/admin/contact'
-            render={routerProps => <Contact {...routerProps} content={this.props.static} handleInquiry={this.handleInquiry} /> }
+            render={routerProps => <AdminContact {...routerProps} content={this.props.static} handleInquiry={this.handleInquiry} /> }
           />
           <Route
             exact
@@ -73,7 +74,9 @@ class Admin extends Component {
 
 const mapStateToProps = state => {
   return {
-    clients: state.clients
+    static: state.static,
+    clients: state.clients,
+    user: state.users.user
   }
 }
 
