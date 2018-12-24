@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import AdminHome from '../components/Home'
-import AdminNavBar from '../components/NavBar'
-import AdminAbout from '../components/About'
-import AdminTrainingPrograms from '../components/TrainingPrograms'
-import AdminFAQ from '../components/FAQ'
-import AdminContact from '../components/Contact'
-import Home from '../components/Home'
-import NavBar from '../components/NavBar'
-import About from '../components/About'
-import TrainingPrograms from '../components/TrainingPrograms'
-import FAQ from '../components/FAQ'
-import Contact from '../components/Contact'
+import {BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
+import AdminHome from '../components/AdminHome'
+import AdminNavBar from '../components/AdminNavBar'
+import AdminAbout from '../components/AdminAbout'
+import AdminTrainingPrograms from '../components/AdminTrainingPrograms'
+import AdminFAQ from '../components/AdminFAQ'
 import authLogin from '../actions/authLogin'
 import logout from '../actions/logout'
 import Clients from '../components/Clients'
+import Login from '../components/Login'
 
 
 class Admin extends Component {
@@ -31,7 +25,6 @@ class Admin extends Component {
   }
 
   render () {
-    debugger
     return (
       <Router>
         <div>
@@ -58,13 +51,18 @@ class Admin extends Component {
           />
           <Route
             exact
-            path='/admin/contact'
-            render={routerProps => <AdminContact {...routerProps} content={this.props.static} handleInquiry={this.handleInquiry} /> }
+            path='/admin/clients'
+            render={routerProps => <Clients {...routerProps} users={this.props.users} /> }
           />
           <Route
             exact
-            path='/admin/clients'
-            render={routerProps => <Clients {...routerProps} users={this.props.users} /> }
+            path='/login'
+            render={routerProps => (
+              (this.props.user && this.props.user.isAdmin) ? (
+                <Redirect to='/admin/clients' />
+              ) : (
+                <Login {...routerProps} handleLogin={this.handleLogin} />)
+            )}
           />
         </div>
       </Router>

@@ -27,11 +27,6 @@ const AdminNavBar = (props) => {
       className='navLink'
       activeStyle={{background: '#33691e', color: 'white'}}
       >FAQ</NavLink>
-      <NavLink to='/admin/contact'
-      exact
-      className='navLink'
-      activeStyle={{background: '#33691e', color: 'white'}}
-      >Contact Us</NavLink>
       <NavLink to='/admin/clients'
       exact
       className='navLink'
