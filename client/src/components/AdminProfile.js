@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const AdminProfile = props => {
-  return (
-    <div>
-      <h1>AdminProfile Page</h1>
-    </div>
-  )
+
+class AdminProfile extends Component {
+  render() {
+    return (
+      <div>
+        <h1>AdminProfile Page</h1>
+      </div>
+    )
+  }
 }
 
 export default AdminProfile;

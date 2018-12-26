@@ -1,16 +1,36 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
+import FAQ from './FAQ'
+import Edit from './Edit'
 
 
-const AdminFAQ = props => {
-  const pcontent = props.content[1].paragraphs.map(p => <p key={p.id}>{p.content}</p>)
-  return (
-    <div className='staticLayout'>
-      <h1>{props.content[1].title}</h1>
-      {pcontent}
-      <Button>Edit</Button>
-    </div>
-  )
+class AdminFAQ extends Component {
+  constructor() {
+    super()
+    this.state = {
+      edit: false,
+      id: null
+    }
+  }
+
+  handleEdit = (id) => {
+    this.setState({
+      edit: true,
+      id: id
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.edit ? (
+          <Edit content={this.props.content[`${this.state.id}`]} />
+        ) : (
+          <FAQ content={this.props.content} handleEdit={this.handleEdit} />
+        )}
+      </div>
+    )
+  }
 }
 
 
