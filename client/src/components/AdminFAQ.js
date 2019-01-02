@@ -24,7 +24,7 @@ class AdminFAQ extends Component {
     return (
       <div>
         {this.state.edit ? (
-          <Edit content={this.props.content[`${this.state.id}`]} />
+          <Edit content={this.props.content[`${this.state.id}`]} handleStaticEdit={this.props.handleStaticEdit} />
         ) : (
           <FAQ content={this.props.content} handleEdit={this.handleEdit} />
         )}

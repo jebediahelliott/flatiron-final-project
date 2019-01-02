@@ -30,7 +30,6 @@ class Edit extends Component {
   }
 
   render() {
-    console.log(this.state)
     let formContent = Object.keys(this.state).map((key, idx) => {
       return (
         <div key={idx}>

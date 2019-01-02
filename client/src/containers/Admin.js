@@ -10,6 +10,7 @@ import authLogin from '../actions/authLogin'
 import logout from '../actions/logout'
 import Clients from '../components/Clients'
 import Login from '../components/Login'
+import staticEdit from '../actions/staticEdit'
 
 
 class Admin extends Component {
@@ -24,6 +25,11 @@ class Admin extends Component {
     processLogout(this.props.dispatch)
   }
 
+  handleStaticEdit = (editInfo) => {
+    const sendEdit = staticEdit();
+
+  }
+
   render () {
     return (
       <Router>
@@ -32,22 +38,22 @@ class Admin extends Component {
           <Route
             exact
             path='/'
-            render={routerProps => <AdminHome {...routerProps} content={this.props.static} /> }
+            render={routerProps => <AdminHome {...routerProps} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
           />
           <Route
             exact
             path='/admin/about'
-            render={routerProps => <AdminAbout {...routerProps} content={this.props.static} /> }
+            render={routerProps => <AdminAbout {...routerProps} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
           />
           <Route
             exact
             path='/admin/training-programs'
-            render={routerProps => <AdminTrainingPrograms {...routerProps} content={this.props.static} /> }
+            render={routerProps => <AdminTrainingPrograms {...routerProps} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
           />
           <Route
             exact
             path='/admin/faq'
-            render={routerProps => <AdminFAQ {...routerProps} content={this.props.static} /> }
+            render={routerProps => <AdminFAQ {...routerProps} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
           />
           <Route
             exact
