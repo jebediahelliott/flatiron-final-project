@@ -24,6 +24,11 @@ class Edit extends Component {
     })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+  }
+
   render() {
     console.log(this.state)
     let formContent = Object.keys(this.state).map((key, idx) => {
@@ -42,11 +47,12 @@ class Edit extends Component {
     return (
       <div className="staticLayout">
         <h1>{this.props.content.title}</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <FormGroup>
             {formContent}
-            <Button onClick={this.newParagraph}>Add New Paragragh</Button>
           </FormGroup>
+          <Button onClick={this.newParagraph}>Add New Paragragh</Button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>
     )

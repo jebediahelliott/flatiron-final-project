@@ -7,13 +7,15 @@ class AdminAbout extends Component {
   constructor() {
     super()
     this.state = {
-      edit: false
+      edit: false,
+      id: null
     }
   }
 
-  handleEdit = () => {
+  handleEdit = (id) => {
     this.setState({
-      edit: true
+      edit: true,
+      id: id
     })
   }
 
@@ -21,7 +23,7 @@ class AdminAbout extends Component {
     return (
       <div>
         {this.state.edit ? (
-          <Edit content={this.props.content} />
+          <Edit content={this.props.content[`${this.state.id}`]} />
         ) : (
           <About content={this.props.content} handleEdit={this.handleEdit} />
         )}

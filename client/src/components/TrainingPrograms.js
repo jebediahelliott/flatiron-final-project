@@ -8,7 +8,7 @@ const TrainingPrograms = props => {
     <div className='staticLayout'>
       <h1>{props.content[3].title}</h1>
       {pcontent}
-      {props.handleEdit ? <Button onClick={props.handleEdit}>Edit</Button> : null}
+      {props.handleEdit ? <Button onClick={() => props.handleEdit(3)}>Edit</Button> : null}
     </div>
   )
 }
