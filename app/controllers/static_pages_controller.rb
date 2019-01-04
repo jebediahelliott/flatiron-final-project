@@ -28,6 +28,7 @@ class StaticPagesController < ApplicationController
 
   # PATCH/PUT /static_pages/1
   def update
+    binding.pry
     if @static_page.update(static_page_params)
       render json: @static_page
     else
@@ -48,6 +49,6 @@ class StaticPagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def static_page_params
-      params.fetch(:static_page, {})
+      params.require(:static_page).permit(:title, paragraphs_attributes: [:content, :id])
     end
 end
