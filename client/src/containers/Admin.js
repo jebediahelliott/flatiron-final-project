@@ -25,9 +25,11 @@ class Admin extends Component {
     processLogout(this.props.dispatch)
   }
 
-  handleStaticEdit = (id, editInfo) => {
+  handleStaticEdit = (id, editInfo, index) => {
+    let props = this.props
     const sendEdit = staticEdit();
-    sendEdit(id, editInfo, this.props.dispatch)
+    sendEdit(id, editInfo, this.props.dispatch, index)
+
   }
 
   render () {

@@ -8,7 +8,6 @@ class Edit extends Component {
     super(props)
     let initialState = {}
     let pars = this.props.content.paragraphs
-    debugger
     this.props.content.paragraphs.forEach((p, idx) => initialState[`paragraph${idx}`] = {id: p.id, content: p.content})
     this.state = initialState
   }
@@ -39,11 +38,11 @@ class Edit extends Component {
         paragraphs_attributes: parAttrs
       }
     }
-    debugger
-    this.props.handleStaticEdit(this.props.content.id, data)
+    this.props.handleStaticEdit(this.props.content.id, data, this.props.contentIndex)
   }
 
   render() {
+    
     let formContent = Object.keys(this.state).map((key, idx) => {
       return (
         <div key={idx}>

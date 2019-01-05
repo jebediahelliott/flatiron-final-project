@@ -28,7 +28,6 @@ class StaticPagesController < ApplicationController
 
   # PATCH/PUT /static_pages/1
   def update
-    binding.pry
     if @static_page.update(static_page_params)
       render json: @static_page
     else

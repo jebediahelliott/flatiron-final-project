@@ -9,14 +9,14 @@ class AdminTrainingPrograms extends Component {
     super()
     this.state = {
       edit: false,
-      id: null
+      index: null
     }
   }
 
-  handleEdit = (id) => {
+  handleEdit = (index) => {
     this.setState({
       edit: true,
-      id: id
+      index: index
     })
   }
 
@@ -24,7 +24,7 @@ class AdminTrainingPrograms extends Component {
     return (
       <div>
         {this.state.edit ? (
-          <Edit content={this.props.content[`${this.state.id}`]} handleStaticEdit={this.props.handleStaticEdit} />
+          <Edit content={this.props.content[`${this.state.index}`]} handleStaticEdit={this.props.handleStaticEdit} contentIndex={this.state.index} />
         ) : (
           <TrainingPrograms content={this.props.content} handleEdit={this.handleEdit} />
         )}

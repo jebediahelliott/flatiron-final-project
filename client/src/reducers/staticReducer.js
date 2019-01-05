@@ -1,7 +1,8 @@
-export default function staticReducer(state = {}, action) {
+export default function staticReducer(state = [], action) {
   switch (action.type) {
-    case 'LOAD_PAGES':
-        return action.pages
+    case 'UPDATE_PAGES':
+      state[action.index] = action.newData
+      return state
     default:
       return state
   }

@@ -1,5 +1,5 @@
 function staticEdit() {
-  return (id, editInfo, dispatch) => {
+  return (id, editInfo, dispatch, index) => {
     fetch(`/static_pages/${id}`, {
       headers: {
         "Content-Type": "application/json",
@@ -10,7 +10,7 @@ function staticEdit() {
     })
     .then(res => res.json())
     .then(res => {
-      debugger
+      dispatch({type: 'UPDATE_PAGES', newData: res, index: index})
     })
 
   }

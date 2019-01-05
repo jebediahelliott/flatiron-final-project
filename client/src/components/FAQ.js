@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 
 
 const FAQ = props => {
+  debugger
   const pcontent = props.content[1].paragraphs.map(p => <p key={p.id}>{p.content}</p>)
   return (
     <div className='staticLayout'>
