@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 
 class FAQ extends Component {
@@ -11,6 +11,7 @@ class FAQ extends Component {
       this.props.trackPage(this.props.match.path, 1);
     }
   }
+
   render() {
     return (
       <div className='staticLayout'>

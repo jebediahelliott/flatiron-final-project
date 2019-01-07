@@ -13,6 +13,9 @@ import Login from '../components/Login'
 import staticEdit from '../actions/staticEdit'
 import Edit from '../components/Edit'
 import FAQ from '../components/FAQ'
+import Home from '../components/Home'
+import About from '../components/About'
+import TrainingPrograms from '../components/TrainingPrograms'
 
 
 
@@ -55,17 +58,17 @@ class Admin extends Component {
           <Route
             exact
             path='/'
-            render={routerProps => <AdminHome {...routerProps} trackPage={this.trackPage} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
+            render={routerProps => <Home {...routerProps} trackPage={this.trackPage} content={this.props.static} /> }
           />
           <Route
             exact
             path='/admin/about'
-            render={routerProps => <AdminAbout {...routerProps} trackPage={this.trackPage} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
+            render={routerProps => <About {...routerProps} trackPage={this.trackPage} content={this.props.static} /> }
           />
           <Route
             exact
             path='/admin/training-programs'
-            render={routerProps => <AdminTrainingPrograms {...routerProps} trackPage={this.trackPage} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
+            render={routerProps => <TrainingPrograms {...routerProps} trackPage={this.trackPage} content={this.props.static} /> }
           />
           <Route
             exact

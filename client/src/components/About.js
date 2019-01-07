@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
-const About = props => {
-  const pcontent = props.content[0].paragraphs.map(p => <p key={p.id}>{p.content}</p>)
-  return (
-    <div className='staticLayout'>
-      <h1>{props.content[0].title}</h1>
-      {pcontent}
-      {props.handleEdit ? <Button onClick={() => props.handleEdit(0)}>Edit</Button> : null}
-    </div>
-  )
+class About extends Component {
+  pcontent = this.props.content[0].paragraphs.map(p => <p key={p.id}>{p.content}</p>)
+
+  componentDidMount() {
+    if (!!this.props.trackPage) {
+      this.props.trackPage(this.props.match.path, 0);
+    }
+  }
+
+  render(){
+    return (
+      <div className='staticLayout'>
+        <h1>{this.props.content[0].title}</h1>
+        {this.pcontent}
+        {this.props.trackPage ? <Link to={`/edit${this.props.match.path}`}><Button>Edit</Button></Link> : null}
+      </div>
+    )
+  }
+
 }
 
 export default About;
