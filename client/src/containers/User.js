@@ -13,7 +13,7 @@ import NavBar from '../components/NavBar'
 import Profile from '../components/Profile'
 import Login from '../components/Login'
 
-class Client extends Component {
+class User extends Component {
 
   handleInquiry = (inquiryInfo) => {
     const inquiry = sendInquiry();
@@ -83,4 +83,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Client)
+export default connect(mapStateToProps)(User)

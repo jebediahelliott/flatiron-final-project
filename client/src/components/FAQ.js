@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-
 class FAQ extends Component {
   pcontent = this.props.content[1].paragraphs.map(p => <p key={p.id}>{p.content}</p>)
 
@@ -25,3 +24,22 @@ class FAQ extends Component {
 }
 
 export default FAQ;
+
+
+
+// const FAQ = props => {
+//   let pcontent = props.content[1].paragraphs.map(p => <p key={p.id}>{p.content}</p>)
+//
+//   if (!!props.trackPage) {
+//     props.trackPage(props.match.path, 1);
+//   }
+//
+//   return (
+//     <div className='staticLayout'>
+//       <h1>{props.content[1].title}</h1>
+//       {pcontent}
+//       {props.trackPage ? <Link to={`/edit${props.match.path}`}><Button>Edit</Button></Link> : null}
+//     </div>
+//   )
+//
+// }

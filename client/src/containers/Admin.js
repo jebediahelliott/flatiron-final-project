@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {BrowserRouter as Router, Route, NavLink, Redirect, withRouter } from 'react-router-dom';
-import AdminHome from '../components/AdminHome'
 import AdminNavBar from '../components/AdminNavBar'
-import AdminAbout from '../components/AdminAbout'
-import AdminTrainingPrograms from '../components/AdminTrainingPrograms'
-import AdminFAQ from '../components/AdminFAQ'
 import authLogin from '../actions/authLogin'
 import logout from '../actions/logout'
 import Clients from '../components/Clients'
@@ -16,6 +12,7 @@ import FAQ from '../components/FAQ'
 import Home from '../components/Home'
 import About from '../components/About'
 import TrainingPrograms from '../components/TrainingPrograms'
+import Profile from '../components/Profile'
 
 
 
@@ -25,6 +22,7 @@ class Admin extends Component {
     this.state = {
       page: null,
       index: null,
+      client: ''
     }
   }
 
@@ -43,11 +41,19 @@ class Admin extends Component {
     sendEdit(id, editInfo, this.props.dispatch, index)
   }
 
-  trackPage = (path, index) => {
+  clientSelector = (client) => {
     this.setState({
-      path: path,
-      index: index
+      client: client
     })
+  }
+
+  trackPage = (path, index) => {
+    if (path !== this.state.path && index !== this.state.index) {
+      this.setState({
+        path: path,
+        index: index
+      })
+    }
   }
 
   render () {
@@ -78,7 +84,11 @@ class Admin extends Component {
           <Route
             exact
             path='/admin/clients'
-            render={routerProps => <Clients {...routerProps} users={this.props.users} /> }
+            render={routerProps => <Clients {...routerProps} clients={this.props.clients} clientSelector={this.clientSelector} /> }
+          />
+          <Route
+            path={`/admin/clients/:user`}
+            render={routerProps => <Profile {...routerProps} user={this.state.client} />}
           />
           <Route
             path='/edit'
@@ -103,7 +113,7 @@ class Admin extends Component {
 const mapStateToProps = state => {
   return {
     static: state.static,
-    clients: state.clients,
+    clients: state.users.clients,
     user: state.users.user
   }
 }

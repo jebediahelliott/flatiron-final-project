@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
 import Admin from './Admin'
-import Client from './Client'
+import User from './User'
 import Static from './Static'
 
 
@@ -13,7 +13,7 @@ class App extends Component {
     if (this.props.user && this.props.user.isAdmin) {
       container = <Admin />
     }else if (this.props.user) {
-      container = <Client />
+      container = <User />
     }else {
       container = <Static />
     }

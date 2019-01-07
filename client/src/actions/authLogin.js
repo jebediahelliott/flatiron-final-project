@@ -12,6 +12,7 @@ function authLogin() {
     .then(res => {
       localStorage.setItem("auth_token",`${res.auth_token}`)
       if (res.user.is_admin) {
+        const admin = res.user
         dispatch({type: 'ADMIN_LOGIN', user: res.user})
         fetch('/users', {
           headers: {
@@ -22,6 +23,8 @@ function authLogin() {
         .then(res => res.json())
         .then(res => {
           dispatch({type: 'LOAD_CLIENTS', clients: res})
+          dispatch({type: 'ADMIN_LOGIN', user: admin})
+
         })
       }else {
         fetch(`/users/${res.user.id}`, {

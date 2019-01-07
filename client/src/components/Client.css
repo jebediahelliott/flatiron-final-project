@@ -1,0 +1,9 @@
+.clientCard {
+  border: solid 1px;
+  border-color: #33691e;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 10px 10px 5px grey;
+  padding: 10px;
+}
