@@ -7,7 +7,7 @@ class Edit extends Component {
   constructor(props) {
     super(props)
     let initialState = {}
-    let pars = this.props.content.paragraphs
+    let info = this.props
     this.props.content.paragraphs.forEach((p, idx) => initialState[`paragraph${idx}`] = {id: p.id, content: p.content})
     this.state = initialState
   }
@@ -38,11 +38,12 @@ class Edit extends Component {
         paragraphs_attributes: parAttrs
       }
     }
-    this.props.handleStaticEdit(this.props.content.id, data, this.props.contentIndex)
+    this.props.handleStaticEdit(this.props.content.id, data, this.props.index)
+    this.props.history.push(this.props.path)
   }
 
   render() {
-    
+
     let formContent = Object.keys(this.state).map((key, idx) => {
       return (
         <div key={idx}>

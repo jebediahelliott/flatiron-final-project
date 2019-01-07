@@ -23,11 +23,7 @@ class AdminFAQ extends Component {
   render() {
     return (
       <div>
-        {this.state.edit ? (
-          <Edit  content={this.props.content[`${this.state.index}`]} handleStaticEdit={this.props.handleStaticEdit} contentIndex={this.state.index} />
-        ) : (
-          <FAQ content={this.props.content} handleEdit={this.handleEdit} />
-        )}
+        <FAQ content={this.props.content} trackPage={this.props.trackPage} handleEdit={this.handleEdit} />
       </div>
     )
   }

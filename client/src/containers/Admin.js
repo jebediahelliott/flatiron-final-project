@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {BrowserRouter as Router, Route, NavLink, Redirect } from 'react-router-dom';
+import {BrowserRouter as Router, Route, NavLink, Redirect, withRouter } from 'react-router-dom';
 import AdminHome from '../components/AdminHome'
 import AdminNavBar from '../components/AdminNavBar'
 import AdminAbout from '../components/AdminAbout'
@@ -11,9 +11,19 @@ import logout from '../actions/logout'
 import Clients from '../components/Clients'
 import Login from '../components/Login'
 import staticEdit from '../actions/staticEdit'
+import Edit from '../components/Edit'
+import FAQ from '../components/FAQ'
+
 
 
 class Admin extends Component {
+  constructor() {
+    super()
+    this.state = {
+      page: null,
+      index: null,
+    }
+  }
 
   handleLogin = (loginInfo) => {
     const login = authLogin();
@@ -26,10 +36,15 @@ class Admin extends Component {
   }
 
   handleStaticEdit = (id, editInfo, index) => {
-    let props = this.props
     const sendEdit = staticEdit();
     sendEdit(id, editInfo, this.props.dispatch, index)
+  }
 
+  trackPage = (path, index) => {
+    this.setState({
+      path: path,
+      index: index
+    })
   }
 
   render () {
@@ -40,27 +55,31 @@ class Admin extends Component {
           <Route
             exact
             path='/'
-            render={routerProps => <AdminHome {...routerProps} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
+            render={routerProps => <AdminHome {...routerProps} trackPage={this.trackPage} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
           />
           <Route
             exact
             path='/admin/about'
-            render={routerProps => <AdminAbout {...routerProps} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
+            render={routerProps => <AdminAbout {...routerProps} trackPage={this.trackPage} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
           />
           <Route
             exact
             path='/admin/training-programs'
-            render={routerProps => <AdminTrainingPrograms {...routerProps} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
+            render={routerProps => <AdminTrainingPrograms {...routerProps} trackPage={this.trackPage} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
           />
           <Route
             exact
             path='/admin/faq'
-            render={routerProps => <AdminFAQ {...routerProps} content={this.props.static} handleStaticEdit={this.handleStaticEdit} /> }
+            render={routerProps => <FAQ {...routerProps} trackPage={this.trackPage} content={this.props.static} /> }
           />
           <Route
             exact
             path='/admin/clients'
             render={routerProps => <Clients {...routerProps} users={this.props.users} /> }
+          />
+          <Route
+            path='/edit'
+            render={routerProps => <Edit {...routerProps} path={this.state.path} handleStaticEdit={this.handleStaticEdit} index={this.state.index} content={this.props.static[this.state.index]} /> }
           />
           <Route
             exact
