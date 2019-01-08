@@ -32,6 +32,7 @@ class Admin extends Component {
   }
 
   handleLogout = () => {
+    localStorage.clear()
     const processLogout = logout()
     processLogout(this.props.dispatch)
   }
@@ -88,7 +89,7 @@ class Admin extends Component {
           />
           <Route
             path={`/admin/clients/:user`}
-            render={routerProps => <Profile {...routerProps} user={this.state.client} />}
+            render={routerProps => <Profile {...routerProps} user={this.state.client} admin={true} />}
           />
           <Route
             path='/edit'

@@ -21,6 +21,7 @@ class User extends Component {
   }
 
   handleLogout = () => {
+    localStorage.clear()
     const processLogout = logout()
     processLogout(this.props.dispatch)
   }

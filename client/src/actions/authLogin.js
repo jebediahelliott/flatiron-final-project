@@ -23,8 +23,6 @@ function authLogin() {
         .then(res => res.json())
         .then(res => {
           dispatch({type: 'LOAD_CLIENTS', clients: res})
-          dispatch({type: 'ADMIN_LOGIN', user: admin})
-
         })
       }else {
         fetch(`/users/${res.user.id}`, {

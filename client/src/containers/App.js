@@ -34,3 +34,19 @@ const mapStateToProps = state => {
 
 
 export default connect(mapStateToProps)(App);
+
+// componentDidMount() {
+//   const token = localStorage.getItem('token')
+//   if (token) {
+//     fetch(`/current_user`, {
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Authorization": token
+//       }
+//     })
+//     .then(res => res.json())
+//     .then(res => {
+//       debugger
+//     })
+//   }
+// }

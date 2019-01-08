@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Client.css'
+import { Button } from 'react-bootstrap'
+
 
 
 const Clients = props => {
@@ -17,6 +19,7 @@ const Clients = props => {
   return (
     <div className='staticLayout'>
       {props.clients ? clients : null}
+      <Link to='#'><Button>New Client</Button></Link>
     </div>
   )
 }
