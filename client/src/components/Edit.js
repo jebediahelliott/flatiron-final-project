@@ -22,7 +22,7 @@ class Edit extends Component {
   }
 
   newParagraph = () => {
-    let i = Object.keys(this.state).length + 1;
+    let i = Object.keys(this.state).length;
     this.setState({
       [`paragraph${i}`]: {content: '', id: null}
     })

@@ -13,6 +13,8 @@ import Home from '../components/Home'
 import About from '../components/About'
 import TrainingPrograms from '../components/TrainingPrograms'
 import Profile from '../components/Profile'
+import ClientEdit from '../components/ClientEdit'
+import NewClient from '../components/NewClient'
 
 
 
@@ -88,12 +90,22 @@ class Admin extends Component {
             render={routerProps => <Clients {...routerProps} clients={this.props.clients} clientSelector={this.clientSelector} /> }
           />
           <Route
-            path={`/admin/clients/:user`}
+            exact
+            path='/admin/new'
+            component={NewClient}
+          />
+          <Route
+            exact
+            path='/admin/clients/:user'
             render={routerProps => <Profile {...routerProps} user={this.state.client} admin={true} />}
           />
           <Route
             path='/edit'
             render={routerProps => <Edit {...routerProps} path={this.state.path} handleStaticEdit={this.handleStaticEdit} index={this.state.index} content={this.props.static[this.state.index]} /> }
+          />
+          <Route
+            path='/admin/clients/:user/edit'
+            render={routerProps => <ClientEdit {...routerProps} />}
           />
           <Route
             exact

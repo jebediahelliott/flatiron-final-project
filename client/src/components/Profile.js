@@ -2,6 +2,7 @@ import React from 'react'
 import Dog from './Dog'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import './Profile.css'
 
 
 const Profile = props => {
@@ -9,8 +10,10 @@ const Profile = props => {
   return (
     <div className='staticLayout'>
       <h1>{props.user.name}</h1>
-      {dogs}
-      {props.admin ? <Link to={`${props.match.path}/edit`}><Button>Edit</Button></Link> : null}
+      <div>
+       {dogs}
+      </div>
+      {props.admin ? <Link to={`${props.match.path}/edit`}><Button className='button'>Edit</Button></Link> : null}
     </div>
   )
 }

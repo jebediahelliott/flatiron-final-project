@@ -10,7 +10,7 @@ const Clients = props => {
   if (props.clients) {
     clients = props.clients.map(client => {
       return (
-        <div className='clientCard'>
+        <div className='clientCard' key={client.id}>
           <Link to={`${props.match.path}/${client.name}`} onClick={() => props.clientSelector(client)}><h3>{client.name}</h3></Link>
         </div>
       )
@@ -19,7 +19,7 @@ const Clients = props => {
   return (
     <div className='staticLayout'>
       {props.clients ? clients : null}
-      <Link to='#'><Button>New Client</Button></Link>
+      <Link to='/admin/new'><Button>New Client</Button></Link>
     </div>
   )
 }
