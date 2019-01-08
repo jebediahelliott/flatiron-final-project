@@ -8,7 +8,7 @@ import { Button } from 'react-bootstrap'
 const Clients = props => {
   let clients
   if (props.clients) {
-    clients = props.clients.map(client => {
+    clients = props.clients.filter(client => client.is_admin !== true).map(client => {
       return (
         <div className='clientCard' key={client.id}>
           <Link to={`${props.match.path}/${client.name}`} onClick={() => props.clientSelector(client)}><h3>{client.name}</h3></Link>
