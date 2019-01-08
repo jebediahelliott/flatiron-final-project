@@ -11,7 +11,7 @@ function newUser() {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res)
+      dispatch({type: 'NEW_USER', newUser: res})
     })
   }
 }

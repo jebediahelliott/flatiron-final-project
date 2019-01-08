@@ -4,6 +4,9 @@ export default function userReducer(state = {}, action) {
       return {...state, loading: true}
     case 'USER_LOGIN':
       return {...state, loading: false, user: {name: action.user.name, email: action.user.email, dogs: action.user.dogs}}
+    case 'NEW_USER':
+      state.clients.push(action.newUser)
+      return {...state, loading: false, clients: state.clients}
     case 'ADMIN_LOGIN':
       return {...state, loading: false, user: {name: action.user.name, email: action.user.email, isAdmin: action.user.is_admin}}
     case 'LOAD_CLIENTS':
