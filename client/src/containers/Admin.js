@@ -22,8 +22,8 @@ import deleteUser from '../actions/deleteUser'
 
 
 class Admin extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       page: null,
       index: null,
@@ -61,13 +61,13 @@ class Admin extends Component {
     const sendEdit = staticEdit();
     sendEdit(id, editInfo, this.props.dispatch, index)
   }
-
+  //Grab client iformation to pass to edit component
   clientSelector = (client) => {
     this.setState({
       client: client
     })
   }
-
+  //track info from static pages to pass to edit page
   trackPage = (path, index) => {
     if (path !== this.state.path && index !== this.state.index) {
       this.setState({
@@ -118,7 +118,7 @@ class Admin extends Component {
             render={routerProps => <Profile {...routerProps} user={this.state.client} admin={true} />}
           />
           <Route
-            path='/edit'
+            path='/admin/:static/edit'
             render={routerProps => <Edit {...routerProps} path={this.state.path} handleStaticEdit={this.handleStaticEdit} index={this.state.index} content={this.props.static[this.state.index]} /> }
           />
           <Route

@@ -17,7 +17,7 @@ class About extends Component {
       <div className='staticLayout'>
         <h1>{this.props.content[0].title}</h1>
         {this.pcontent}
-        {this.props.trackPage ? <Link to={`/edit${this.props.match.path}`}><Button>Edit</Button></Link> : null}
+        {this.props.trackPage ? <Link to={`${this.props.match.path}/edit`}><Button>Edit</Button></Link> : null}
       </div>
     )
   }
