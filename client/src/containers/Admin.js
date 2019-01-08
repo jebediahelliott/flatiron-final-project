@@ -16,6 +16,8 @@ import Profile from '../components/Profile'
 import ClientEdit from '../components/ClientEdit'
 import NewClient from '../components/NewClient'
 import newUser from '../actions/newUser'
+import updateUser from '../actions/updateUser'
+import deleteUser from '../actions/deleteUser'
 
 
 
@@ -32,6 +34,16 @@ class Admin extends Component {
   addUser = (userInfo) => {
     const createUser = newUser()
     createUser(this.props.dispatch, userInfo)
+  }
+
+  editUser = (userInfo) => {
+    const update = updateUser()
+    update(this.props.dispatch, userInfo)
+  }
+
+  deleteUser = (userInfo) => {
+    const remove = deleteUser()
+    remove(this.props.dispatch, userInfo)
   }
 
   handleLogin = (loginInfo) => {
@@ -111,7 +123,7 @@ class Admin extends Component {
           />
           <Route
             path='/admin/clients/:user/edit'
-            render={routerProps => <ClientEdit {...routerProps} />}
+            render={routerProps => <ClientEdit {...routerProps} editUser={this.editUser} deleteUser={this.deleteUser} client={this.state.client} />}
           />
           <Route
             exact
