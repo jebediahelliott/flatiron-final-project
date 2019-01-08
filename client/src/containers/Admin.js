@@ -15,6 +15,7 @@ import TrainingPrograms from '../components/TrainingPrograms'
 import Profile from '../components/Profile'
 import ClientEdit from '../components/ClientEdit'
 import NewClient from '../components/NewClient'
+import newUser from '../actions/newUser'
 
 
 
@@ -26,6 +27,11 @@ class Admin extends Component {
       index: null,
       client: ''
     }
+  }
+
+  addUser = (userInfo) => {
+    const createUser = newUser()
+    createUser(this.props.dispatch, userInfo)
   }
 
   handleLogin = (loginInfo) => {
@@ -92,7 +98,7 @@ class Admin extends Component {
           <Route
             exact
             path='/admin/new'
-            component={NewClient}
+            render={routerProps => <NewClient {...routerProps} addUser={this.addUser} />}
           />
           <Route
             exact

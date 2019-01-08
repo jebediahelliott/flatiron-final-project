@@ -6,25 +6,27 @@ class NewClient extends Component {
     super()
     this.state = {
       name: '',
-      dogs: {
+      email: '',
+      password: '',
+      dogs_attributes: {
         0: {
           name: '',
           breed: '',
-          notes: ''
+          training_notes: ''
         }
       }
     }
   }
 
   newDog = () => {
-    let i = Object.keys(this.state).length
+    let i = Object.keys(this.state.dogs_attributes).length
     this.setState({
-      dogs: {
-        ...this.state.dogs,
+      dogs_attributes: {
+        ...this.state.dogs_attributes,
         [i]: {
           name: '',
           breed: '',
-          notes: ''
+          training_notes: ''
         }
       }
     })
@@ -33,10 +35,10 @@ class NewClient extends Component {
   handleDogChange = (event) => {
     let key = event.target.dataset.key
     this.setState({
-      dogs: {
-        ...this.state.dogs,
+      dogs_attributes: {
+        ...this.state.dogs_attributes,
         [key]: {
-          ...this.state.dogs[key],
+          ...this.state.dogs_attributes[key],
           [event.target.name]: event.target.value
         }
       }
@@ -51,12 +53,14 @@ class NewClient extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    debugger
+    let user = {user: this.state}
+    this.props.addUser(user)
+    this.props.history.push('/admin/clients')
   }
 
 
   render() {
-    let dogs = Object.keys(this.state.dogs).map((key) => {
+    let dogs = Object.keys(this.state.dogs_attributes).map((key) => {
       return (
         <div key={key}>
           <ControlLabel>Name</ControlLabel>
@@ -64,7 +68,7 @@ class NewClient extends Component {
             type='text'
             data-key={key}
             name='name'
-            value={this.state.dogs[key]['name']}
+            value={this.state.dogs_attributes[key]['name']}
             onChange={this.handleDogChange}
           />
           <ControlLabel>Breed</ControlLabel>
@@ -72,15 +76,15 @@ class NewClient extends Component {
             type='text'
             data-key={key}
             name='breed'
-            value={this.state.dogs[key]['breed']}
+            value={this.state.dogs_attributes[key]['breed']}
             onChange={this.handleDogChange}
           />
           <ControlLabel>Notes</ControlLabel>
           <FormControl
             type='text'
             data-key={key}
-            name='notes'
-            value={this.state.dogs[key]['notes']}
+            name='training_notes'
+            value={this.state.dogs_attributes[key]['training_notes']}
             onChange={this.handleDogChange}
           />
         </div>
@@ -95,6 +99,20 @@ class NewClient extends Component {
               type='text'
               name='name'
               value={this.state.name}
+              onChange={this.handleChange}
+            />
+            <ControlLabel>Email</ControlLabel>
+            <FormControl
+              type='text'
+              name='email'
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+            <ControlLabel>Password</ControlLabel>
+            <FormControl
+              type='password'
+              name='password'
+              value={this.state.password}
               onChange={this.handleChange}
             />
             <h3>Dogs</h3>

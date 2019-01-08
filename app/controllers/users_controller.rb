@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+  binding.pry
 
   # GET /users
   def index
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+    binding.pry
     @user = User.new(user_params)
 
     if @user.save
@@ -46,6 +48,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.fetch(:user, {})
+      params.require(:user).permit(:name, :email, :password, dogs_attributes: [:name, :breed, :training_notes])
     end
 end
