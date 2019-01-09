@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web app to display information about product/service as well as mange users and user info.
 
-Things you may want to cover:
+##Ruby version
+  2.3.3
+##Installation
+Fork and clone the repo. Run "rails db:migrate" or "rails db:setup" in the terminal to get the database up and running. Once the database is up open the rails console and create an admin user.
+```
+User.create(name: 'name', email: 'email', password: 'password')
+```
+Use "rake start" to launch the servers and a browser window should open automagically. 
 
-* Ruby version
+## Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/jebediahelliott/jpj-canine-training. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+[MIT License](https://opensource.org/licenses/MIT).
