@@ -8,7 +8,13 @@ function authLogin() {
       method: 'post',
       body: JSON.stringify(login)
     })
-    .then(res => res.json())
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error('Invalid Credentials');
+      }
+    })
     .then(res => {
       localStorage.setItem("auth_token",`${res.auth_token}`)
       if (res.user.is_admin) {
@@ -37,8 +43,10 @@ function authLogin() {
         })
       }
     })
+    .catch(error => {
+      alert(error)
+    })
   }
-
 }
 
 export default authLogin;
