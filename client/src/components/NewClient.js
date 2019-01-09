@@ -55,7 +55,7 @@ class NewClient extends Component {
     event.preventDefault()
     let user = {user: this.state}
     this.props.addUser(user)
-    this.props.history.push('/admin/clients')
+    this.props.history.push(`/admin/clients/${this.state.name}`)
   }
 
 

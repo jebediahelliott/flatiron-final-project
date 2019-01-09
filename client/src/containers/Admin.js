@@ -27,18 +27,30 @@ class Admin extends Component {
     this.state = {
       page: null,
       index: null,
-      client: ''
+      client: '',
+      static: this.props.static,
+      clients: this.props.clients
     }
   }
 
   addUser = (userInfo) => {
     const createUser = newUser()
     createUser(this.props.dispatch, userInfo)
+    this.setState({
+      client: userInfo.user
+    })
   }
 
   editUser = (userInfo) => {
     const update = updateUser()
     update(this.props.dispatch, userInfo)
+    let index = this.state.clients.findIndex(client => client.id === userInfo.user.id)
+    let array = this.state.clients
+    array[index] = userInfo.user
+    this.setState({
+      client: userInfo.user,
+      clients: array
+    })
   }
 
   deleteUser = (userInfo) => {
@@ -60,11 +72,17 @@ class Admin extends Component {
   handleStaticEdit = (id, editInfo, index) => {
     const sendEdit = staticEdit();
     sendEdit(id, editInfo, this.props.dispatch, index)
+    let array = this.state.static
+    array[index] = editInfo.static_page
+    this.setState({
+      static: array
+    })
   }
   //Grab client iformation to pass to edit component
   clientSelector = (client) => {
     this.setState({
-      client: client
+      client: client,
+      clients: this.props.clients
     })
   }
   //track info from static pages to pass to edit page
@@ -78,6 +96,9 @@ class Admin extends Component {
   }
 
   render () {
+    // let i = this.props
+    // let info = this.state
+    // debugger
     return (
       <Router>
         <div>
@@ -100,7 +121,7 @@ class Admin extends Component {
           <Route
             exact
             path='/admin/faq'
-            render={routerProps => <FAQ {...routerProps} trackPage={this.trackPage} content={this.props.static} /> }
+            render={routerProps => <FAQ {...routerProps} trackPage={this.trackPage} content={this.state.static} /> }
           />
           <Route
             exact
@@ -142,6 +163,7 @@ class Admin extends Component {
 }
 
 const mapStateToProps = state => {
+
   return {
     static: state.static,
     clients: state.users.clients,
