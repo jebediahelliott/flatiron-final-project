@@ -6,37 +6,43 @@ import './staticPages.css'
 class Edit extends Component {
   constructor(props) {
     super(props)
-    let initialState = {}
-    let info = this.props
-    this.props.content.paragraphs.forEach((p, idx) => initialState[`paragraph${idx}`] = {id: p.id, content: p.content})
-    this.state = initialState
+    let pars = {}
+    this.props.content.paragraphs.forEach((par, idx) => pars[idx] = par)
+    this.state = {
+      title: this.props.content.title,
+      paragraphs_attributes: pars
+    }
   }
 
   handleChange = (event) => {
+    let key = event.target.dataset.index
     this.setState({
-      [event.target.dataset.index]: {
-        ...this.state[event.target.dataset.index],
-        content: event.target.value
+      paragraphs_attributes: {
+        ...this.state.paragraphs_attributes,
+        [key]: {
+          ...this.state.paragraphs_attributes[key],
+          [event.target.name]: event.target.value
+        }
       }
     })
   }
 
   newParagraph = () => {
-    let i = Object.keys(this.state).length;
+    let i = Object.keys(this.state.paragraphs_attributes).length;
     this.setState({
-      [`paragraph${i}`]: {content: '', id: null}
+      paragraphs_attributes: {
+        ...this.state.paragraphs_attributes,
+        [i]: {
+          content: ''
+        }
+      }
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let parAttrs = {}
-    Object.keys(this.state).forEach((key, idx) => parAttrs[idx] = {content: this.state[key].content, id: this.state[key].id})
     let data = {
-      static_page: {
-        title: this.props.content.title,
-        paragraphs_attributes: parAttrs
-      }
+      static_page: this.state
     }
     this.props.handleStaticEdit(this.props.content.id, data, this.props.index)
     this.props.history.push(this.props.path)
@@ -44,15 +50,15 @@ class Edit extends Component {
 
   render() {
 
-    let formContent = Object.keys(this.state).map((key, idx) => {
+    let formContent = Object.keys(this.state.paragraphs_attributes).map((key, idx) => {
       return (
         <div key={idx}>
           <ControlLabel>Paragragh {idx + 1}</ControlLabel>
           <FormControl
             componentClass="textarea"
             data-index={key}
-            name={'static_page[paragraphs_attributes][][content]'}
-            value={this.state[key]['content']}
+            name={'content'}
+            value={this.state.paragraphs_attributes[key]['content']}
             onChange={this.handleChange}
           />
         </div>
