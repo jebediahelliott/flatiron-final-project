@@ -18,6 +18,7 @@ import NewClient from '../components/NewClient'
 import newUser from '../actions/newUser'
 import updateUser from '../actions/updateUser'
 import deleteUser from '../actions/deleteUser'
+import deleteParagraph from '../actions/deleteParagraph'
 
 
 
@@ -39,6 +40,11 @@ class Admin extends Component {
     this.setState({
       client: userInfo.user
     })
+  }
+
+  deleteParagraph = (id, parentId) => {
+    const remove = deleteParagraph()
+    remove(this.props.dispatch, id, parentId)
   }
 
   editUser = (userInfo) => {
@@ -68,7 +74,7 @@ class Admin extends Component {
     const processLogout = logout()
     processLogout(this.props.dispatch)
   }
-
+  //Send edit to server, update local state
   handleStaticEdit = (id, editInfo, index) => {
     const sendEdit = staticEdit();
     sendEdit(id, editInfo, this.props.dispatch, index)
@@ -96,16 +102,13 @@ class Admin extends Component {
   }
 
   render () {
-    // let i = this.props
-    // let info = this.state
-    // debugger
     return (
       <Router>
         <div>
           <AdminNavBar user={this.props.user} handleLogout={this.handleLogout} />
           <Route
             exact
-            path='/'
+            path='/admin/home'
             render={routerProps => <Home {...routerProps} trackPage={this.trackPage} content={this.props.static} /> }
           />
           <Route
@@ -140,7 +143,7 @@ class Admin extends Component {
           />
           <Route
             path='/admin/:static/edit'
-            render={routerProps => <Edit {...routerProps} path={this.state.path} handleStaticEdit={this.handleStaticEdit} index={this.state.index} content={this.props.static[this.state.index]} /> }
+            render={routerProps => <Edit {...routerProps} deleteParagraph={this.deleteParagraph} path={this.state.path} handleStaticEdit={this.handleStaticEdit} index={this.state.index} content={this.props.static[this.state.index]} /> }
           />
           <Route
             path='/admin/clients/:user/edit'

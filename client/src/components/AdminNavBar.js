@@ -7,7 +7,7 @@ import './NavBar.css'
 const AdminNavBar = (props) => {
   return (
     <div id='navBar'>
-      <NavLink to='/'
+      <NavLink to='/admin/home'
       exact
       className='navLink'
       activeStyle={{background: '#33691e', color: 'white'}}
