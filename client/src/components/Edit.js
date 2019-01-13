@@ -51,6 +51,8 @@ class Edit extends Component {
   render() {
 
     let formContent = Object.keys(this.state.paragraphs_attributes).map((key, idx) => {
+      let id = this.state.paragraphs_attributes[key]['id']
+      let parentId = this.props.content.id
       return (
         <div key={idx}>
           <ControlLabel>Paragragh {idx + 1}</ControlLabel>
@@ -61,6 +63,7 @@ class Edit extends Component {
             value={this.state.paragraphs_attributes[key]['content']}
             onChange={this.handleChange}
           />
+          <Button onClick={() => this.props.deleteParagraph(id, parentId)}>Delete</Button>
         </div>
       )
     })

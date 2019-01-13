@@ -7,7 +7,6 @@ function deleteUser() {
         Authorization: token
       },
       method: 'DELETE',
-      body: JSON.stringify(userInfo)
     })
     dispatch({type: 'DELETE_USER', id: userInfo.user.id})
   }
