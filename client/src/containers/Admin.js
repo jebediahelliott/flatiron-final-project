@@ -74,7 +74,7 @@ class Admin extends Component {
     const processLogout = logout()
     processLogout(this.props.dispatch)
   }
-
+  //Send edit to server, update local state
   handleStaticEdit = (id, editInfo, index) => {
     const sendEdit = staticEdit();
     sendEdit(id, editInfo, this.props.dispatch, index)
@@ -102,9 +102,6 @@ class Admin extends Component {
   }
 
   render () {
-    // let i = this.props
-    // let info = this.state
-    // debugger
     return (
       <Router>
         <div>
