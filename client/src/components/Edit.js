@@ -48,6 +48,21 @@ class Edit extends Component {
     this.props.history.push(this.props.path)
   }
 
+  handleDelete = (id, parentId) => {
+    this.props.deleteParagraph(id, parentId)
+    // debugger here breaks
+    let paragraphs = []
+    Object.keys(this.state.paragraphs_attributes).forEach(key => {
+      if (this.state.paragraphs_attributes[key]['id'] !== id ) {
+        paragraphs.push(this.state.paragraphs_attributes[key])
+      }
+    })
+    this.setState({
+      paragraphs_attributes: paragraphs
+    })
+  }
+
+
   render() {
 
     let formContent = Object.keys(this.state.paragraphs_attributes).map((key, idx) => {
@@ -63,7 +78,7 @@ class Edit extends Component {
             value={this.state.paragraphs_attributes[key]['content']}
             onChange={this.handleChange}
           />
-          <Button onClick={() => this.props.deleteParagraph(id, parentId)}>Delete</Button>
+          <Button onClick={() => this.handleDelete(id, parentId)}>Delete</Button>
         </div>
       )
     })
