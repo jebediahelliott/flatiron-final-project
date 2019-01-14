@@ -8,7 +8,13 @@ function deleteUser() {
       },
       method: 'DELETE',
     })
-    dispatch({type: 'DELETE_USER', id: userInfo.user.id})
+    .then(res => {
+      if (res.ok) {
+        dispatch({type: 'DELETE_USER', id: userInfo.user.id})
+      }else {
+        alert('Unable to Delete')
+      }
+    })
   }
 }
 

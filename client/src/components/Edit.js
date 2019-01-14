@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap'
+import {FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap'
 import './staticPages.css'
 
 

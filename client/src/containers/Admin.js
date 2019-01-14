@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {BrowserRouter as Router, Route, NavLink, Redirect, withRouter } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import AdminNavBar from '../components/AdminNavBar'
 import authLogin from '../actions/authLogin'
 import logout from '../actions/logout'

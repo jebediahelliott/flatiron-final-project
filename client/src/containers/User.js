@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Home from '../components/Home'
-import ClientNavBar from '../components/NavBar'
 import About from '../components/About'
 import TrainingPrograms from '../components/TrainingPrograms'
 import FAQ from '../components/FAQ'
