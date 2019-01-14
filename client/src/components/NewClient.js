@@ -54,7 +54,9 @@ class NewClient extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     let user = {user: this.state}
+    console.log('A')
     this.props.addUser(user)
+    console.log('B')
     this.props.history.push(`/admin/clients/${this.state.name}`)
   }
 

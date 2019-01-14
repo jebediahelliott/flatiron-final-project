@@ -37,9 +37,9 @@ class Admin extends Component {
   addUser = (userInfo) => {
     const createUser = newUser()
     createUser(this.props.dispatch, userInfo)
-    this.setState({
-      client: userInfo.user
-    })
+    // this.setState({
+    //   client: userInfo.user
+    // })
   }
 
   deleteParagraph = (id, parentId) => {

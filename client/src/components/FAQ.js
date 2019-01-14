@@ -1,16 +1,32 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Paragraph from './Paragraph'
 
 class FAQ extends Component {
+  // constructor() {
+  //   let count
+  //   if (this.props.content[1].paragraphs) {
+  //     count = this.props.content[1].paragraphs.length
+  //   }else if (this.props.content[1].paragraphs_attributes){
+  //
+  //   }
+  //
+  //   this.state = {counters: []}
+  // }
+
+
+
+
   pcontent = () => {
     if (this.props.content[1].paragraphs) {
-      return this.props.content[1].paragraphs.map(p => <p key={p.id}>{p.content}</p>)
+      return this.props.content[1].paragraphs.map(p => <Paragraph key={p.id} content={p.content} />)
     }else if (this.props.content[1].paragraphs_attributes) {
       let pars = this.props.content[1].paragraphs_attributes
-      return Object.keys(pars).map(p => <p key={pars[p]['id']}>{pars[p]['content']}</p>)
+      return Object.keys(pars).map(p => <Paragraph key={pars[p]['id']} content={pars[p]['content']} />)
     }
   }
+
 
   componentDidMount() {
     if (!!this.props.trackPage) {
