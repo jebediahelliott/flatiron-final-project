@@ -4,16 +4,6 @@ import { Link } from 'react-router-dom'
 import Paragraph from './Paragraph'
 
 class FAQ extends Component {
-  // constructor() {
-  //   let count
-  //   if (this.props.content[1].paragraphs) {
-  //     count = this.props.content[1].paragraphs.length
-  //   }else if (this.props.content[1].paragraphs_attributes){
-  //
-  //   }
-  //
-  //   this.state = {counters: []}
-  // }
 
 
 

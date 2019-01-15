@@ -1,15 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
 
 
-const Paragraph = props => {
+class Paragraph extends Component {
+  state = {
+    counter: 0
+  }
 
-  return (
-    <div>
-      <p>{props.content}</p>
-      <Button>Like</Button>
-    </div>
-  )
+  incrementCounter = () => {
+    this.setState({
+      counter: ++this.state.counter
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <p>{this.props.content}</p>
+        <Button onClick={this.incrementCounter}>Like</Button><span> {this.state.counter}</span>
+      </div>
+    )
+  }
 }
 
 export default Paragraph;
