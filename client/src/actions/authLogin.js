@@ -1,3 +1,30 @@
+function fetchUsers() {
+  fetch('/users', {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `${res.auth_token}`
+    }
+  })
+  .then(res => res.json())
+  .then(res => {
+    dispatch({type: 'LOAD_CLIENTS', clients: res})
+  })
+}
+
+function fetchUser() {
+  fetch(`/users/${res.user.id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `${res.auth_token}`
+    }
+  })
+  .then(res => res.json())
+  .then(res => {
+    dispatch({type: 'USER_LOGIN', user: res})
+  })
+}
+
+
 function authLogin() {
   return (dispatch, login) => {
     dispatch({type: 'AUTHENTICATING'})
@@ -19,27 +46,9 @@ function authLogin() {
       localStorage.setItem("auth_token",`${res.auth_token}`)
       if (res.user.is_admin) {
         dispatch({type: 'ADMIN_LOGIN', user: res.user})
-        fetch('/users', {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `${res.auth_token}`
-          }
-        })
-        .then(res => res.json())
-        .then(res => {
-          dispatch({type: 'LOAD_CLIENTS', clients: res})
-        })
+        fetchUsers()
       }else {
-        fetch(`/users/${res.user.id}`, {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `${res.auth_token}`
-          }
-        })
-        .then(res => res.json())
-        .then(res => {
-          dispatch({type: 'USER_LOGIN', user: res})
-        })
+        fetchUser()
       }
     })
     .catch(error => {
