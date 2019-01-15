@@ -1,8 +1,10 @@
-function fetchUsers() {
+
+// Get information for all users
+function fetchUsers(token, dispatch) {
   fetch('/users', {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `${res.auth_token}`
+      "Authorization": token
     }
   })
   .then(res => res.json())
@@ -10,12 +12,12 @@ function fetchUsers() {
     dispatch({type: 'LOAD_CLIENTS', clients: res})
   })
 }
-
-function fetchUser() {
-  fetch(`/users/${res.user.id}`, {
+// Get information for an individual user
+function fetchUser(id, token, dispatch) {
+  fetch(`/users/${id}`, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `${res.auth_token}`
+      "Authorization": token
     }
   })
   .then(res => res.json())
@@ -24,7 +26,7 @@ function fetchUser() {
   })
 }
 
-
+// Check credentials and make follow up request based on admin/nonadmin login
 function authLogin() {
   return (dispatch, login) => {
     dispatch({type: 'AUTHENTICATING'})
@@ -46,9 +48,9 @@ function authLogin() {
       localStorage.setItem("auth_token",`${res.auth_token}`)
       if (res.user.is_admin) {
         dispatch({type: 'ADMIN_LOGIN', user: res.user})
-        fetchUsers()
+        fetchUsers(res.auth_token, dispatch)
       }else {
-        fetchUser()
+        fetchUser(res.user.id, res.auth_token, dispatch)
       }
     })
     .catch(error => {

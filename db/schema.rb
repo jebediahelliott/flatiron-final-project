@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_151757) do
+ActiveRecord::Schema.define(version: 2019_01_15_185154) do
 
   create_table "dogs", force: :cascade do |t|
     t.string "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_12_18_151757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "static_page_id"
+    t.integer "counter"
   end
 
   create_table "static_pages", force: :cascade do |t|
