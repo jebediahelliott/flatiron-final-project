@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get 'current_user', to: 'authentication#current_user'
   resources :dogs
   resources :users
-  resources :paragraphs, only: :destroy
+  resources :paragraphs, only: [:destroy, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

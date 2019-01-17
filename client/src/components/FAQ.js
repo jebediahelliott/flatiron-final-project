@@ -10,10 +10,10 @@ class FAQ extends Component {
 
   pcontent = () => {
     if (this.props.content[1].paragraphs) {
-      return this.props.content[1].paragraphs.map(p => <Paragraph key={p.id} content={p.content} />)
+      return this.props.content[1].paragraphs.map(p => <Paragraph key={p.id} paragraph={p} />)
     }else if (this.props.content[1].paragraphs_attributes) {
       let pars = this.props.content[1].paragraphs_attributes
-      return Object.keys(pars).map(p => <Paragraph key={pars[p]['id']} content={pars[p]['content']} />)
+      return Object.keys(pars).map(p => <Paragraph key={pars[p]['id']} paragraph={pars[p]} />)
     }
   }
 
