@@ -22,13 +22,28 @@ class Paragraph extends Component {
       method: 'put',
       body: JSON.stringify(data)
     })
+    .then(res => {
+      if (res.ok) {
+        let counter = this.state.counter + 1
+        this.setState({
+          counter: counter
+        })
+      }
+    })
+    // .then(res => {
+    //   debugger
+    //   console.log(res);
+    //   this.setState({
+    //     counter: res.counter
+    //   })
+    // })
   }
 
   incrementCounter = () => {
-    let counter = this.state.counter + 1
-    this.setState({
-      counter: counter
-    })
+    // let counter = this.state.counter + 1
+    // this.setState({
+    //   counter: counter
+    // })
     this.persistCounter(this.props.paragraph.id)
   }
 

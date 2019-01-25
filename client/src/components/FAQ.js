@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom'
 import Paragraph from './Paragraph'
 
 class FAQ extends Component {
+  constructor() {
+    super()
+    this.state = {
+      changeOrder: false
+    }
+  }
 
 
 
@@ -13,8 +19,23 @@ class FAQ extends Component {
       return this.props.content[1].paragraphs.map(p => <Paragraph key={p.id} paragraph={p} />)
     }else if (this.props.content[1].paragraphs_attributes) {
       let pars = this.props.content[1].paragraphs_attributes
-      return Object.keys(pars).map(p => <Paragraph key={pars[p]['id']} paragraph={pars[p]} />)
+      let arr = Object.keys(pars).map(p => pars[p])
+      if (this.state.changeOrder === true) {
+        arr.sort((a, b) => {
+          return a.counter - b.counter
+        })
+        console.log(pars)
+        return arr.map(par => <Paragraph key={par.id} paragraph={par} />)
+      }else {
+        return arr.map(par => <Paragraph key={par.id} paragraph={par} />)
+      }
     }
+  }
+
+  reorder = () => {
+    this.setState({
+      changeOrder: true
+    })
   }
 
 
@@ -28,6 +49,7 @@ class FAQ extends Component {
     return (
       <div className='staticLayout'>
         <h1>{this.props.content[1].title}</h1>
+        <Button onClick={this.reorder}>Order by Likes</Button>
         {this.pcontent()}
         {this.props.trackPage ? <Link to={`${this.props.match.path}/edit`}><Button>Edit</Button></Link> : null}
       </div>
