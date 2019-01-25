@@ -15,20 +15,15 @@ class FAQ extends Component {
 
 
   pcontent = () => {
-    if (this.props.content[1].paragraphs) {
-      return this.props.content[1].paragraphs.map(p => <Paragraph key={p.id} paragraph={p} />)
-    }else if (this.props.content[1].paragraphs_attributes) {
-      let pars = this.props.content[1].paragraphs_attributes
-      let arr = Object.keys(pars).map(p => pars[p])
-      if (this.state.changeOrder === true) {
-        arr.sort((a, b) => {
-          return a.counter - b.counter
-        })
-        console.log(pars)
-        return arr.map(par => <Paragraph key={par.id} paragraph={par} />)
-      }else {
-        return arr.map(par => <Paragraph key={par.id} paragraph={par} />)
-      }
+    let pars = this.props.content[1].paragraphs_attributes
+    let arr = Object.keys(pars).map(p => pars[p])
+    if (this.state.changeOrder === true) {
+      arr.sort((a, b) => {
+        return a.counter - b.counter
+      })
+      return arr.map(par => <Paragraph key={par.id} paragraph={par} />)
+    }else {
+      return arr.map(par => <Paragraph key={par.id} paragraph={par} />)
     }
   }
 

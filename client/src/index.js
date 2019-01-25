@@ -12,7 +12,17 @@ import rootReducer from './reducers/rootReducer';
 
 fetch('/static_pages')
 .then(res => res.json())
-.then(initialState => {
+.then(res => {
+  const initialState = []
+  res.forEach((page) => {
+    const obj = {}
+    obj.id = page.id
+    obj.title = page.title
+    const pars = {}
+    page.paragraphs.forEach((par, idx) => pars[idx] = par)
+    obj.paragraphs_attributes = pars
+    initialState.push(obj)
+  })
   const store = createStore(rootReducer, {static: initialState}, applyMiddleware(thunk))
 
   ReactDOM.render(

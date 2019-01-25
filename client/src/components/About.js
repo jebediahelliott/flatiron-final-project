@@ -5,12 +5,8 @@ import { Link } from 'react-router-dom'
 
 class About extends Component {
   pcontent = () => {
-    if (this.props.content[0].paragraphs) {
-      return this.props.content[0].paragraphs.map(p => <p key={p.id}>{p.content}</p>)
-    }else if (this.props.content[0].paragraphs_attributes) {
-      let pars = this.props.content[0].paragraphs_attributes
-      return Object.keys(pars).map(p => <p key={pars[p]['id']}>{pars[p]['content']}</p>)
-    }
+    let pars = this.props.content[0].paragraphs_attributes
+    return Object.keys(pars).map(p => <p key={pars[p]['id']}>{pars[p]['content']}</p>)
   }
   componentDidMount() {
     if (!!this.props.trackPage) {
