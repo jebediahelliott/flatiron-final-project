@@ -10,7 +10,14 @@ function staticEdit() {
     })
     .then(res => res.json())
     .then(res => {
-      dispatch({type: 'UPDATE_PAGES', newData: res, index: index})
+      debugger
+        const obj = {}
+        obj.id = res.id
+        obj.title = res.title
+        const pars = {}
+        res.paragraphs.forEach((par, idx) => pars[idx] = par)
+        obj.paragraphs_attributes = pars
+      dispatch({type: 'UPDATE_PAGES', newData: obj, index: index})
     })
 
   }

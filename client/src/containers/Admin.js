@@ -25,21 +25,22 @@ import deleteParagraph from '../actions/deleteParagraph'
 class Admin extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
       page: null,
       index: null,
-      client: '',
-      static: this.props.static,
-      clients: this.props.clients
+      client: ''
+      // static: this.props.static,
+      // clients: this.props.clients
     }
   }
 
   addUser = (userInfo) => {
     const createUser = newUser()
     createUser(this.props.dispatch, userInfo)
-    // this.setState({
-    //   client: userInfo.user
-    // })
+    this.setState({
+      client: userInfo.user
+    })
   }
 
   deleteParagraph = (id, parentId) => {
@@ -50,12 +51,12 @@ class Admin extends Component {
   editUser = (userInfo) => {
     const update = updateUser()
     update(this.props.dispatch, userInfo)
-    let index = this.state.clients.findIndex(client => client.id === userInfo.user.id)
-    let array = this.state.clients
-    array[index] = userInfo.user
+    // let index = this.state.clients.findIndex(client => client.id === userInfo.user.id)
+    // let array = this.state.clients
+    // array[index] = userInfo.user
     this.setState({
-      client: userInfo.user,
-      clients: array
+      client: userInfo.user
+      // clients: array
     })
   }
 
@@ -78,17 +79,17 @@ class Admin extends Component {
   handleStaticEdit = (id, editInfo, index) => {
     const sendEdit = staticEdit();
     sendEdit(id, editInfo, this.props.dispatch, index)
-    let array = this.state.static
-    array[index] = editInfo.static_page
-    this.setState({
-      static: array
-    })
+    // let array = this.state.static
+    // array[index] = editInfo.static_page
+    // this.setState({
+    //   static: array
+    // })
   }
   //Grab client iformation to pass to edit component
   clientSelector = (client) => {
     this.setState({
-      client: client,
-      clients: this.props.clients
+      client: client
+      // clients: this.props.clients
     })
   }
   //track info from static pages to pass to edit page
@@ -124,7 +125,7 @@ class Admin extends Component {
           <Route
             exact
             path='/admin/faq'
-            render={routerProps => <FAQ {...routerProps} trackPage={this.trackPage} content={this.state.static} /> }
+            render={routerProps => <FAQ {...routerProps} trackPage={this.trackPage} content={this.props.static} /> }
           />
           <Route
             exact

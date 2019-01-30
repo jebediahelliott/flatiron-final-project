@@ -16,6 +16,7 @@ class FAQ extends Component {
 
   pcontent = () => {
     let pars = this.props.content[1].paragraphs_attributes
+    debugger
     let arr = Object.keys(pars).map(p => pars[p])
     if (this.state.changeOrder === true) {
       arr.sort((a, b) => {

@@ -6,12 +6,7 @@ import './staticPages.css'
 class Edit extends Component {
   constructor(props) {
     super(props)
-    let pars = {}
-    this.props.content.paragraphs.forEach((par, idx) => pars[idx] = par)
-    this.state = {
-      title: this.props.content.title,
-      paragraphs_attributes: pars
-    }
+    this.state = this.props.content
   }
 
   handleChange = (event) => {
