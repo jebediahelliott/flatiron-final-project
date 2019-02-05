@@ -45,7 +45,6 @@ class Edit extends Component {
 
   handleDelete = (id, parentId) => {
     this.props.deleteParagraph(id, parentId)
-    // debugger here breaks
     let paragraphs = []
     Object.keys(this.state.paragraphs_attributes).forEach(key => {
       if (this.state.paragraphs_attributes[key]['id'] !== id ) {

@@ -30,20 +30,9 @@ class Paragraph extends Component {
         })
       }
     })
-    // .then(res => {
-    //   debugger
-    //   console.log(res);
-    //   this.setState({
-    //     counter: res.counter
-    //   })
-    // })
   }
 
   incrementCounter = () => {
-    // let counter = this.state.counter + 1
-    // this.setState({
-    //   counter: counter
-    // })
     this.persistCounter(this.props.paragraph.id)
   }
 
