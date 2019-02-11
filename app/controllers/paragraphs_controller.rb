@@ -1,4 +1,4 @@
-class ParagraphsController < ApplicationController
+class ParagraphsController < ApiController
   skip_before_action :authenticate_request, only: :update
 
   def update

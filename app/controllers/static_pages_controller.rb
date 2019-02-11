@@ -1,4 +1,4 @@
-class StaticPagesController < ApplicationController
+class StaticPagesController < ApiController
   before_action :set_static_page, only: [:show, :update, :destroy]
   skip_before_action :authenticate_request, only: [:index]
 

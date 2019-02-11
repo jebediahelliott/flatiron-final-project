@@ -1,4 +1,4 @@
-class DogsController < ApplicationController
+class DogsController < ApiController
   before_action :set_dog, only: [:show, :update, :destroy]
 
   # GET /dogs

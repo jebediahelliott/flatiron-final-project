@@ -1,4 +1,4 @@
-class InquiriesController < ApplicationController
+class InquiriesController < ApiController
   before_action :set_inquiry, only: [:show, :update, :destroy]
   skip_before_action :authenticate_request
 
