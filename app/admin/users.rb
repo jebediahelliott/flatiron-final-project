@@ -1,5 +1,14 @@
 ActiveAdmin.register User do
-  permit_params :name, :email
+  permit_params :name, :email, :dogs
+
+  index do
+    column :name
+    column :email
+    column 'Dogs' do |user|
+    user.dogs.map(&:name).join(', ')
+  end
+    actions
+  end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
