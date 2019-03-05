@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :name, :email, :dogs
+  permit_params :name, :email, dogs_attributes: [:name, :breed, :training_notes, :id, :_destroy]
 
   index do
     column :name
@@ -9,7 +9,41 @@ ActiveAdmin.register User do
   end
     actions
   end
+
   filter :name
+
+  show do
+    attributes_table do
+      row :name
+      row :email
+    end
+
+    panel 'Dogs' do
+      table_for user.dogs do
+        column :name
+        column :breed
+        column :training_notes
+      end
+    end
+    active_admin_comments
+  end
+
+  form do |f|
+    f.inputs 'Details' do
+     f.input :name
+     f.input :email
+    end
+
+    f.inputs 'Dogs' do
+      f.has_many :dogs, :allow_destroy => true  do |c|
+        c.input :name
+        c.input :breed
+        c.input :training_notes
+      end
+    end
+    f.actions
+  end
+
 
 
 # See permitted parameters documentation:
