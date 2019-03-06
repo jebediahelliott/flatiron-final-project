@@ -1,4 +1,5 @@
 ActiveAdmin.register Paragraph do
+  belongs_to :static_page 
   permit_params :content, :static_page_id
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

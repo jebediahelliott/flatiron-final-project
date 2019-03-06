@@ -35,10 +35,10 @@ ActiveAdmin.register User do
     end
 
     f.inputs 'Dogs' do
-      f.has_many :dogs, :allow_destroy => true  do |c|
-        c.input :name
-        c.input :breed
-        c.input :training_notes
+      f.has_many :dogs, heading: false, :allow_destroy => true  do |d|
+        d.input :name
+        d.input :breed
+        d.input :training_notes
       end
     end
     f.actions
