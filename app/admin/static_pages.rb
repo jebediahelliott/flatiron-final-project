@@ -18,6 +18,19 @@ ActiveAdmin.register StaticPage do
       end
     end
   end
+
+  form do |f|
+    f.inputs 'Title' do
+      f.input :title
+    end
+
+    f.inputs 'Paragraphs' do
+      f.has_many :paragraphs, :heading => false, :allow_destroy => true do |p|
+        p.input :content, :as => :text
+      end
+    end
+    f.actions
+  end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
