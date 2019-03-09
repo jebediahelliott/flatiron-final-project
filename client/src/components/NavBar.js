@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import logo from './logo.jpg'
 import './NavBar.css'
 
 
@@ -7,6 +8,7 @@ import './NavBar.css'
 const NavBar = (props) => {
   return (
     <div id='navBar'>
+      <img src={logo} alt="Logo" />
       <NavLink to='/'
       exact
       className='navLink'
