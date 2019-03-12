@@ -7,8 +7,9 @@ import './NavBar.css'
 
 const NavBar = (props) => {
   return (
+    <div>
     <div id='navBar'>
-      <img src={logo} alt="Logo" />
+    <img className='logo' src={logo} alt="Logo" />
       <NavLink to='/'
       exact
       className='navLink'
@@ -53,6 +54,7 @@ const NavBar = (props) => {
         activeStyle={{background: '#33691e', color: 'white'}}
         >Log In</NavLink>
       )}
+    </div>
     </div>
   )
 }
